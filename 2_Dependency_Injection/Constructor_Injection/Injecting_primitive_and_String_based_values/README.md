@@ -52,7 +52,7 @@ We are providing the information into the bean with this file. The constructor-a
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
   
-<bean id="employee" class="com.javatpoint.Employee">  
+<bean id="employee" class="io.spring.injection.Employee">  
   <constructor-arg value="10" type="int" /> 
 </bean>  
   
@@ -85,7 +85,7 @@ public class Main {
 If you don't specify the type attribute in the constructor-arg element, by default string type constructor will be invoked.
 
 ```xml
-<bean id="employee" class="com.javatpoint.Employee">  
+<bean id="employee" class="io.spring.injection.Employee">  
   <constructor-arg value="10" />
 </bean>  
 ```
@@ -98,7 +98,7 @@ If you change the bean element as given above, string parameter constructor will
 You may also pass the string literal as following:
 
 ```xml
-<bean id="employee" class="com.javatpoint.Employee">  
+<bean id="employee" class="io.spring.injection.Employee">  
   <constructor-arg value="Hakim" />
 </bean>  
 ```
@@ -109,7 +109,7 @@ You may also pass the string literal as following:
 You may pass integer literal and string both as following
 
 ```xml
-<bean id="employee" class="com.javatpoint.Employee">  
+<bean id="employee" class="io.spring.injection.Employee">  
   <constructor-arg value="10" type="int" />  
   <constructor-arg value="Hakim" />  
 </bean>  
