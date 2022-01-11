@@ -3,7 +3,7 @@ Let's see the simple example to inject primitive and string-based values. We hav
 
 - Employee.java
 - applicationContext.xml
-- Test.java
+- Main.java
 
 ---
 
@@ -59,7 +59,7 @@ We are providing the information into the bean with this file. The constructor-a
 </beans>  
 ```
 
-### Test.java
+### Main.java
 This class gets the bean from the applicationContext.xml file and calls the show method.
 
 ```java
