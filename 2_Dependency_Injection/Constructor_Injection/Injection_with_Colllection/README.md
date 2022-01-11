@@ -70,3 +70,18 @@ The list element of constructor-arg is used here to define the list.
   
 </beans>  
 ```
+
+### Test.java
+This class gets the bean from the applicationContext.xml file and calls the displayInfo method.
+
+``` 
+public class Test {  
+  public static void main(String[] args) {  
+  
+    ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+    Employee employee = (Employee) applicationContext.getBean("employee");
+    employee.show();
+      
+  }  
+}  
+```
