@@ -17,7 +17,7 @@ public class Employee {
   private int id;  
   private String name;  
   
-  // Constructos
+  // Constructors
   public Employee() {System.out.println("def cons");}  
   
   public Employee(int id) {this.id = id;}  
