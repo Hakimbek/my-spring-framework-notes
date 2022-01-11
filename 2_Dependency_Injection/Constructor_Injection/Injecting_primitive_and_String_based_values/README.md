@@ -48,12 +48,9 @@ We are providing the information into the bean with this file. The constructor-a
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
-<beans  
-    xmlns="http://www.springframework.org/schema/beans"  
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
-    xmlns:p="http://www.springframework.org/schema/p"  
-    xsi:schemaLocation="http://www.springframework.org/schema/beans  
-                http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">  
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
   
 <bean id="employee" class="com.javatpoint.Employee">  
   <constructor-arg value="10" type="int" /> 
