@@ -74,7 +74,7 @@ The list element of constructor-arg is used here to define the list.
 ### Test.java
 This class gets the bean from the applicationContext.xml file and calls the displayInfo method.
 
-``` 
+```java
 public class Test {  
   public static void main(String[] args) {  
   
