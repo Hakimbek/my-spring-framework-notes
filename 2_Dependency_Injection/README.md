@@ -64,3 +64,10 @@ We can inject the dependency by constructor. The `<constructor-arg>` subelement 
 - Dependent object (contained object)
 - Collection values etc.
 
+# Dependency Injection by setter method
+We can inject the dependency by setter method also. The `<property>` subelement of `<bean>` is used for setter injection. Here we are going to inject
+
+- primitive and String-based values
+- Dependent object (contained object)
+- Collection values etc.
+
