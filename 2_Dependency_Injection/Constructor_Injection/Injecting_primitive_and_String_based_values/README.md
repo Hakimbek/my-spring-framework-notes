@@ -1,10 +1,3 @@
-# Dependency Injection by Constructor
-We can inject the dependency by constructor. The `<constructor-arg>` subelement of `<bean>` is used for constructor injection. Here we are going to inject
-
-- primitive and String-based values
-- Dependent object (contained object)
-- Collection values etc.
-
 ### Injecting primitive and string-based values
 Let's see the simple example to inject primitive and string-based values. We have created three files here:
 
