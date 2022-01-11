@@ -69,16 +69,12 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;  
 import org.springframework.core.io.*;  
   
-public class Test {  
+public class Main {  
   public static void main(String[] args) {  
-  
-    Resource r=new ClassPathResource("applicationContext.xml");  
-    BeanFactory factory=new XmlBeanFactory(r);  
-          
-    Employee s=(Employee)factory.getBean("e");  
-    s.show();  
+    ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+    Employee employee = (Employee) context.getBean("employee");
+    employee.show();
   }  
-  
 }  
 ```
 ### Output: 10 null
