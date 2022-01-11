@@ -46,3 +46,27 @@ public class Question {
  
 }  
 ```
+
+### applicationContext.xml
+The list element of constructor-arg is used here to define the list.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+  
+  <bean id="question" class="com.javatpoint.Question">  
+    <constructor-arg value="111" />  
+    <constructor-arg value="What is java?" />
+    <constructor-arg>  
+      <list>  
+        <value>Java is a programming language</value>  
+        <value>Java is a Platform</value>  
+        <value>Java is an Island of Indonasia</value>  
+      </list>  
+    </constructor-arg>  
+</bean>  
+  
+</beans>  
+```
