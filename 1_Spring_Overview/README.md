@@ -18,7 +18,7 @@ Spring is a lightweight framework. It can be thought of as a ***framework of fra
 ## Spring Modules
 The Spring framework comprises many modules such as core, beans, context, expression language, AOP, Aspects, Instrumentation, JDBC, ORM, OXM, JMS, Transaction, Web, Servlet, Struts etc. These modules are grouped into Test, Core Container, AOP, Aspects, Instrumentation, Data Access / Integration, Web (MVC / Remoting)
 
-![This is spring modules](/image/spring-modules.png)
+![This is spring modules](image/spring-modules.png)
 
 ### - **Test**
   - This layer provides support for testing with *JUnit* and *TestNG*.
