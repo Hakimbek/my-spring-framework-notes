@@ -1,3 +1,30 @@
+# Dependency Injection in Spring
+Dependency Injection (DI) is a design pattern that removes the dependency from the programming code so that it can be easy to manage and test the application. 
+Dependency Injection makes our programming code loosely coupled. In such case we write the code as:
+
+```java
+class Employee {  
+  Address address;  
+  
+  // Constructor
+  Employee(Address address) {  
+    this.address = address;  
+  } 
+  
+  // Setter
+  public void setAddress(Address address) {  
+    this.address = address;  
+  }  
+  
+}  
+```
+
+In such case, instance of Address class is provided by external souce such as XML file either by constructor or setter method.
+
+### Spring framework provides two ways to inject dependency
+- By Constructor
+- By Setter method
+
 # IoC Container
 The IoC container is responsible for instantiating, configuring and assembling the objects. The IoC container gets information from the XML file and works accordingly. The main tasks performed by IoC container are:
 - *to instantiate the application class*
