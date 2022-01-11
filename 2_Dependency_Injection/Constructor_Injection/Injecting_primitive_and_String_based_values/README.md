@@ -31,7 +31,7 @@ public class Employee {
   
   // Show method
   void show(){  
-    System.out.println(id+" "+name);  
+    System.out.println(id + " " + name);  
   }  
   
 }  
