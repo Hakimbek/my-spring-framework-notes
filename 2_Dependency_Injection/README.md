@@ -57,4 +57,10 @@ In such case, instance of Address class is provided by external souce such as XM
 - By Constructor
 - By Setter method
 
+# Dependency Injection by Constructor
+We can inject the dependency by constructor. The `<constructor-arg>` subelement of `<bean>` is used for constructor injection. Here we are going to inject
+
+- primitive and String-based values
+- Dependent object (contained object)
+- Collection values etc.
 
