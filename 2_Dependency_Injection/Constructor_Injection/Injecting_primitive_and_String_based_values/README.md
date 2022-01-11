@@ -1,4 +1,4 @@
-### Injecting primitive and string-based values
+# Injecting primitive and string-based values
 Let's see the simple example to inject primitive and string-based values. We have created three files here:
 
 - Employee.java
