@@ -264,3 +264,15 @@ The entry attribute of map is used to define the key and value information.
 
 ### Main.java
 This class gets the bean from the applicationContext.xml file and calls the displayInfo() method.
+
+```
+public class Main {
+    public static void main(String[] args) {
+
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Question question = (Question) context.getBean("question");
+        question.displayInfo();
+
+    }
+}
+```
