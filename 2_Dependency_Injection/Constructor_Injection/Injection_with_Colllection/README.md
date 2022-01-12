@@ -187,3 +187,15 @@ The **ref** element is used to define the reference of another bean. Here, we ar
 
 ### Main.java
 This class gets the bean from the applicationContext.xml file and calls the displayInfo method.
+
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Question question = (Question) context.getBean("question");
+        question.displayInfo();
+
+    }
+}
+```
