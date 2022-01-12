@@ -247,14 +247,14 @@ The entry attribute of map is used to define the key and value information.
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
   
-  <bean id="question" class="io.spring.framework.map.Question">  
+  <bean id="question" class="io.spring.framework.map.primitive.Question">  
     <constructor-arg value="11" />  
     <constructor-arg value="What is Java?" />
     <constructor-arg>  
       <map>  
-        <entry key="Java is a Programming Language" value="Ajay Kumar"></entry>  
-        <entry key="Java is a Platform" value="John Smith"></entry>  
-        <entry key="Java is an Island" value="Raj Kumar"></entry>  
+        <entry key="Java is a Programming Language" value="Hakimbek Bhramov"></entry>  
+        <entry key="Java is a Platform" value="Orif"></entry>  
+        <entry key="Java is an Island" value="Xurshida"></entry>  
       </map>  
     </constructor-arg>  
   </bean>  
@@ -344,7 +344,7 @@ public class Answer {
 
 ### User.java
 
-```
+```java
 public class User {  
   private int id;  
   private String name,email;  
