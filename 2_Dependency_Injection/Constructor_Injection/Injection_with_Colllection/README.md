@@ -2,9 +2,9 @@
 We can inject collection values by constructor in spring framework. There can be used three elements inside the constructor-arg element.
 
 It can be:
-- list
-- set
-- map
+- **List**
+- **Set**
+- **Map**
 
 Each collection can have string based and non-string based values.
 In this example, we are taking the example of Forum where One question can have multiple answers. There are three pages:
