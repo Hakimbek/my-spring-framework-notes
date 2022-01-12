@@ -251,3 +251,147 @@ public class Main {
     }
 }
 ```
+
+---
+
+## Setter Injection with Non-String Map (having dependent Object)
+In this example, we are using map as the answer that have Answer and User. Here, we are using key and value pair both as an object. Answer has its own information such as *answerId, answer* and *postedDate*, User has its own information such as *userId, username* and *emailId*.
+
+Like previous examples, it is the example of forum where one question can have multiple answers.
+
+### Question.java
+This class contains three properties, getters & setters and displayInfo() method to display the information.
+
+```java
+public class Question {  
+  private int id;  
+  private String name;  
+  private Map<Answer,User> answers;  
+  
+  //getters and setters  
+  
+  public void displayInfo() {
+        System.out.println("question id: " + id);
+        System.out.println("question name: " + name);
+        System.out.println("Answers....");
+        Set<Map.Entry<Answer, User>> set = answers.entrySet();
+        Iterator<Map.Entry<Answer, User>> itr = set.iterator();
+        while (itr.hasNext()) {
+            Map.Entry<Answer, User> entry = itr.next();
+            Answer ans = entry.getKey();
+            User user = entry.getValue();
+            System.out.println("Answer Information:");
+            System.out.println(ans);
+            System.out.println("Posted By:");
+            System.out.println(user);
+        }
+  }
+  
+}  
+```
+
+### Answer.java
+
+```java
+public class Answer {  
+  private int id;  
+  private String answer;  
+  private Date postedDate;  
+  
+  public Answer() {}  
+  
+  public Answer(int id, String answer, Date postedDate) {  
+    this.id = id;  
+    this.answer = answer;  
+    this.postedDate = postedDate;  
+  }  
+  
+  public String toString() {  
+    return "Id: " + id + " Answer: " + answer + " Posted Date: " + postedDate;  
+  }  
+}  
+```
+
+### User.java
+
+```java
+public class User {  
+  private int id;  
+  private String name;
+  private String email;  
+  
+  public User() {}
+  
+  public User(int id, String name, String email) {  
+    this.id = id;  
+    this.name = name;  
+    this.email = email;  
+  }  
+  
+  public String toString(){  
+    return "Id: " + id + " Name: " + name + " Email Id: " + email;  
+  }  
+}  
+```
+
+### applicationContext.xml
+The **key-ref** and **value-ref** attributes of entry element is used to define the reference of bean in the map.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="answer1" class="io.spring.framework.Answer">
+        <constructor-arg value="1" type="int" />
+        <constructor-arg value="Java is a Programming Language"/>
+        <constructor-arg value="12/12/2001"/>
+    </bean>
+
+    <bean id="answer2" class="io.spring.framework.Answer">
+        <constructor-arg value="2" type="int"/>
+        <constructor-arg value="Java is a Platform"/>
+        <constructor-arg value="12/12/2003"/>
+    </bean>
+
+    <bean id="user1" class="io.spring.framework.User">
+        <constructor-arg value="1" type="int"/>
+        <constructor-arg value="Hakim"/>
+        <constructor-arg value="abduhakim.bahramov@gmail.com"/>
+    </bean>
+
+    <bean id="user2" class="io.spring.framework.User">
+        <constructor-arg value="2" type="int"/>
+        <constructor-arg value="Xurshida"/>
+        <constructor-arg value="khurshida.bakhramova@gmail.com"/>
+    </bean>
+
+    <bean id="question" class="io.spring.framework.Question">
+        <property name="id" value="1"/>
+        <property name="name" value="What is Java?"/>
+        <property name="answers">
+            <map>
+                <entry key-ref="answer1" value-ref="user1"/>
+                <entry key-ref="answer2" value-ref="user2"/>
+            </map>
+        </property>
+    </bean>
+
+</beans>
+```
+
+### Test.java
+This class gets the bean from the applicationContext.xml file and calls the displayInfo() method to display the information.
+
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Question question = (Question) context.getBean("question");
+        question.displayInfo();
+
+    }
+}
+```
