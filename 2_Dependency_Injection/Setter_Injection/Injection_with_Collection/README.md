@@ -180,3 +180,74 @@ public class Main {
     }
 }
 ```
+
+---
+
+## Setter Injection with Map
+In this example, we are using map as the answer for a question that have answer as the key and username as the value. Here, we are using key and value pair both as a string.
+
+Like previous examples, it is the example of forum where one question can have multiple answers.
+
+### Question.java
+This class contains three properties, getters & setters and displayInfo() method to display the information.
+
+```java
+public class Question {  
+  private int id;  
+  private String name;  
+  private Map<String,String> answers;  
+  
+  //getters and setters  
+  
+  public void displayInfo() {
+        System.out.println("question id: " + id);
+        System.out.println("question name: " + name);
+        System.out.println("Answers....");
+        Set<Map.Entry<String, String>> set = answers.entrySet();
+        Iterator<Map.Entry<String, String>> itr = set.iterator();
+        while (itr.hasNext()) {
+            Map.Entry<String,String> entry = itr.next();
+            System.out.println("Answer: " + entry.getKey() + " Posted By: " + entry.getValue());
+        }
+  }
+  
+}  
+```
+
+### applicationContext.xml
+The **entry** attribute of map is used to define the key and value information.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="question" class="io.spring.framework.Question">
+        <property name="id" value="1"/>
+        <property name="name" value="What is Java?"/>
+        <property name="answers">
+            <map>
+                <entry key="Java is a programming language" value="Hakim Bahramov"/>
+                <entry key="Java is a Platform" value="Xurshida"/>
+            </map>
+        </property>
+    </bean>
+
+</beans>
+```
+
+### Main.java
+This class gets the bean from the applicationContext.xml file and calls the displayInfo() method.
+
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Question question = (Question) context.getBean("question");
+        question.displayInfo();
+
+    }
+}
+```
