@@ -11,7 +11,7 @@ In this example, we are taking the example of Forum where One question can have 
 
 - Question.java
 - applicationContext.xml
-- Test.java
+- Main.java
 
 In this example, we are using list that can have duplicate elements, you may use set that have only unique elements. But, you need to change list to set in the applicationContext.xml file and List to Set in the Question.java file.
 
