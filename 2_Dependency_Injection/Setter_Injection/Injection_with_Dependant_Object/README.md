@@ -1,73 +1,75 @@
-# IoC Container
-The IoC container is responsible for instantiating, configuring and assembling the objects. The IoC container gets information from the XML file and works accordingly. The main tasks performed by IoC container are:
-- *to instantiate the application class*
-- *to configure the object*
-- *to assemble the dependencies between the objects*
+# Setter Injection with Dependent Object
+Like Constructor Injection, we can inject the dependency of another bean using setters. In such a case, we use the property element. Here, our scenario is Employee HAS-A Address. The Address class object will be termed as the dependent object. Let's see the Address class first:
 
-### There are two types of IoC containers. They are:
-- **BeanFactory**
-- **ApplicationContext**
-
-### Difference between BeanFactory and the ApplicationContext
-The *org.springframework.beans.factory.BeanFactory* and the *org.springframework.context.ApplicationContext* interfaces act as the IoC container. The ApplicationContext interface is built on top of the BeanFactory interface. It adds some extra functionality than BeanFactory such as simple integration with Spring's AOP, message resource handling (for I18N), event propagation and application layer specific context (e.g. WebApplicationContext) for web applications. So it is better to use ApplicationContext than BeanFactory.
-
-### Using BeanFactory
-The XmlBeanFactory is the implementation class for the BeanFactory interface. To use the BeanFactory, we need to create the instance of XmlBeanFactory class as given below:
+### Address.java
+This class contains four properties, setters and getters and toString() method.
 
 ```java
-Resource resource = new ClassPathResource("applicationContext.xml");  
-BeanFactory factory = new XmlBeanFactory(resource);
-```
-
-The constructor of the XmlBeanFactory class receives the Resource object, so we need to pass the resource object to create the object of BeanFactory.
-
-### Using ApplicationContext
-The ClassPathXmlApplicationContext class is the implementation class of the ApplicationContext interface. We need to instantiate the ClassPathXmlApplicationContext class to use the ApplicationContext as given below:
-
-```java
-ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");  
-```
-
-The constructor of the ClassPathXmlApplicationContext class receives a string, so we can pass the name of the xml file to create the instance of ApplicationContext.
-
-# Dependency Injection in Spring
-Dependency Injection (DI) is a design pattern that removes the dependency from the programming code so that it can be easy to manage and test the application. 
-Dependency Injection makes our programming code loosely coupled. In such case we write the code as:
-
-```java
-class Employee {  
-  Address address;  
+public class Address {  
+  private String city;
+  private String state;
+  private String country;  
   
-  // Constructor
-  Employee(Address address) {  
-    this.address = address;  
-  } 
+  //getters and setters  
   
-  // Setter
-  public void setAddress(Address address) {  
-    this.address = address;  
+  public String toString() {  
+    return city + " " + state + " " + country;  
   }  
+```
+
+### Employee.java
+It contains three properties id, name and address(dependent object) , setters and getters with displayInfo() method.
+
+```java
+public class Employee {  
+  private int id;  
+  private String name;  
+  private Address address;  
   
+  //setters and getters  
+  
+  void displayInfo() {  
+    System.out.println(id + " " + name);  
+    System.out.println(address);  
+  }  
 }  
 ```
 
-In such case, instance of Address class is provided by external souce such as XML file either by constructor or setter method.
+### applicationContext.xml
+The **ref** attribute of **property** elements is used to define the reference of another bean.
 
-### Spring framework provides two ways to inject dependency
-- By Constructor
-- By Setter method
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-# Dependency Injection by Constructor
-We can inject the dependency by constructor. The `<constructor-arg>` subelement of `<bean>` is used for constructor injection. Here we are going to inject
+    <bean id="address" class="io.spring.framework.Address">
+        <property name="city" value="Urgench"/>
+        <property name="state" value="Xorezm"/>
+        <property name="country" value="Uzbekistan"/>
+    </bean>
 
-- primitive and String-based values
-- Dependent object (contained object)
-- Collection values etc.
+    <bean id="employee" class="io.spring.framework.Employee">
+        <property name="id" value="1"/>
+        <property name="name" value="Hakimbek Bahramov"/>
+        <property name="address" ref="address"/>
+    </bean>
 
-# Dependency Injection by setter method
-We can inject the dependency by setter method also. The `<property>` subelement of `<bean>` is used for setter injection. Here we are going to inject
+</beans>
+```
 
-- primitive and String-based values
-- Dependent object (contained object)
-- Collection values etc.
+### Main.java
+This class gets the bean from the applicationContext.xml file and calls the displayInfo() method.
 
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Employee employee = (Employee) context.getBean("employee");
+        employee.displayInfo();
+        
+    }
+}
+```
