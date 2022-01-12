@@ -78,9 +78,9 @@ This class gets the bean from the applicationContext.xml file and calls the disp
 public class Main {  
   public static void main(String[] args) {  
   
-    ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-    Employee employee = (Employee) applicationContext.getBean("employee");
-    employee.show();
+     ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+     Question question = (Question) context.getBean("question");
+     question.displayInfo();
       
   }  
 }  
