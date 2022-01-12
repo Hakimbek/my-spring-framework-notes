@@ -57,7 +57,7 @@ The list element of constructor-arg is used here to define the list.
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
   
   <bean id="question" class="com.javatpoint.Question">  
-    <constructor-arg value="111" />  
+    <constructor-arg value="3" />  
     <constructor-arg value="What is java?" />
     <constructor-arg>  
       <list>  
