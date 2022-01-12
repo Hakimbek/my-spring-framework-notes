@@ -287,7 +287,7 @@ Like previous examples, it is the example of forum where one question can have m
 ### Question.java
 This class contains three properties, two constructors and displayInfo() method to display the information.
 
-```
+```java
 public class Question {  
   private int id;  
   private String name;  
@@ -322,7 +322,7 @@ public class Question {
 
 ### Answer.java
 
-```
+```java
 public class Answer {  
   private int id;  
   private String answer;  
