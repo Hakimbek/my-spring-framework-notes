@@ -68,23 +68,17 @@ The ref attribute is used to define the reference of another object, such way we
   <bean id="employee" class="my.spring.framework.dependencyInjection.consInjectionWithDepObj.Employee">  
     <constructor-arg value="22" type="int" />  
     <constructor-arg value="Hakim" />
-    <constructor-arg>  
-      <ref bean="address"/>  
-    </constructor-arg>  
+    <constructor-arg ref="address" />  
   </bean>  
   
 </beans>  
 ```
 
-### Test.java
+### Main.java
 This class gets the bean from the applicationContext.xml file and calls the show method.
 
-```java
-import org.springframework.beans.factory.BeanFactory;  
-import org.springframework.beans.factory.xml.XmlBeanFactory;  
-import org.springframework.core.io.*;  
-  
-public class Test {  
+```java 
+public class Main {  
     public static void main(String[] args) {  
           
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
