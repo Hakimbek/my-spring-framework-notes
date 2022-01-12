@@ -83,6 +83,8 @@ public class Main {
 }  
 ```
 
+---
+
 ## Constructor Injection with Non-String Collection (having Dependent Object)
 If we have dependent object in the collection, we can inject these information by using the *ref* element inside the list, set or map.
 
