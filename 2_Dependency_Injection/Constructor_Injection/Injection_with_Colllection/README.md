@@ -53,7 +53,7 @@ The list element of constructor-arg is used here to define the list.
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
   
-  <bean id="question" class="com.javatpoint.Question">  
+  <bean id="question" class="io.spring.framework.Question">  
     <constructor-arg value="3" />  
     <constructor-arg value="What is java?" />
     <constructor-arg>  
@@ -159,19 +159,19 @@ The **ref** element is used to define the reference of another bean. Here, we ar
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-  <bean id="answer1" class="io.spring.framewort.Answer">  
+  <bean id="answer1" class="io.spring.framework.Answer">  
     <constructor-arg value="1" /> 
     <constructor-arg value="Java is a programming language" />  
     <constructor-arg value="Hakim" />
   </bean>  
   
-  <bean id="answer2" class="io.spring.framewort.Answer">  
+  <bean id="answer2" class="io.spring.framework.Answer">  
     <constructor-arg value="2" />
     <constructor-arg value="Java is a Platform" />
     <constructor-arg value="Orif" />
   </bean>  
   
-  <bean id="question" class="io.spring.framewort.Question">  
+  <bean id="question" class="io.spring.framework.Question">  
     <constructor-arg value="3" />  
     <constructor-arg value="What is java?" />  
     <constructor-arg>  
