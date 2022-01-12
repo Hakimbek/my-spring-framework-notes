@@ -19,9 +19,6 @@ In this example, we are using list that can have duplicate elements, you may use
 This class contains three properties, two constructors and displayInfo() method that prints the information. Here, we are using List to contain the multiple answers.
 
 ```java
-import java.util.Iterator;  
-import java.util.List;  
-  
 public class Question {  
   private int id;  
   private String name;  
