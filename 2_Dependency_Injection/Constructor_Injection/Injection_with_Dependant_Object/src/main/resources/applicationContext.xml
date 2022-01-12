@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="address" class="io.spring.framework.Address">
+        <constructor-arg value="Urgench" />
+        <constructor-arg value="Xorezm" />
+        <constructor-arg value="Uzbekistan" />
+    </bean>
+
+    <bean id="employee" class="io.spring.framework.Employee">
+        <constructor-arg value="22" />
+        <constructor-arg value="Hakim" />
+        <constructor-arg ref="address"/>
+    </bean>
+
+</beans>
