@@ -35,7 +35,7 @@ public class Employee {
 
 ### Address.java
 
-```
+```java
 public class Address {  
   private String city;
   private String state;
@@ -56,7 +56,7 @@ public class Address {
 
 ### applicationContext.xml
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -83,7 +83,7 @@ public class Address {
 ### Main.java
 This class gets the bean from the applicationContext.xml file and calls the show method.
 
-```
+```java
 public class Main {
     public static void main(String[] args) {
         
