@@ -210,7 +210,7 @@ Like previous examples, it is the example of forum where one question can have m
 ### Question.java
 This class contains three properties, two constructors and displayInfo() method to display the information.
 
-```
+```java
 public class Question {  
   private int id;  
   private String name;  
@@ -241,7 +241,7 @@ public class Question {
 ### applicationContext.xml
 The entry attribute of map is used to define the key and value information.
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>  
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
