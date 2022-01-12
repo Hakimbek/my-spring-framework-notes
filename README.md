@@ -9,4 +9,4 @@
   - ### Setter Injection
     - [Injecting primitive and string-based values](2_Dependency_Injection/Setter_Injection/Inject_primitive_and_String_based_values/README.md)
     - [Injection with Dependent Object](2_Dependency_Injection/Setter_Injection/Injection_with_Dependant_Object/README.md)
-    - [Injection with Collection](2_Dependency_Injection/Setter_Injection/Injection_with_Colllection/README.md)
+    - [Injection with Collection](2_Dependency_Injection/Setter_Injection/Injection_with_Collection/README.md)
