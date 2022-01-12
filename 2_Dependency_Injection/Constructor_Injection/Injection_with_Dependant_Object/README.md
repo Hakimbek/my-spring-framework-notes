@@ -69,7 +69,6 @@ The ref attribute is used to define the reference of another object, such way we
     <constructor-arg value="Uzbekistan" />
   </bean>  
   
-  
   <bean id="employee" class="my.spring.framework.dependencyInjection.consInjectionWithDepObj.Employee">  
     <constructor-arg value="22" type="int" />  
     <constructor-arg value="Hakim" />
