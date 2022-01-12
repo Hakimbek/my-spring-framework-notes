@@ -276,3 +276,92 @@ public class Main {
     }
 }
 ```
+
+---
+
+## Constructor Injection with Non-String Map (having dependent Object)
+In this example, we are using map as the answer that have Answer and User. Here, we are using key and value pair both as an object. Answer has its own information such as *answerId, answer* and *postedDate*, User has its own information such as *userId, username* and *emailId*.
+
+Like previous examples, it is the example of forum where one question can have multiple answers.
+
+### Question.java
+This class contains three properties, two constructors and displayInfo() method to display the information.
+
+```
+public class Question {  
+  private int id;  
+  private String name;  
+  private Map<Answer,User> answers;  
+  
+  public Question() {}  
+  
+  public Question(int id, String name, Map<Answer, User> answers) {  
+    this.id = id;  
+    this.name = name;  
+    this.answers = answers;  
+  }  
+  
+  public void displayInfo(){  
+    System.out.println("question id: " + id);  
+    System.out.println("question name: " + name);  
+    System.out.println("Answers....");  
+    Set<Entry<Answer, User>> set = answers.entrySet();  
+    Iterator<Entry<Answer, User>> itr = set.iterator();  
+    while (itr.hasNext()) {  
+        Entry<Answer, User> entry = itr.next();  
+        Answer ans = entry.getKey();  
+        User user = entry.getValue();  
+        System.out.println("Answer Information:");  
+        System.out.println(ans);  
+        System.out.println("Posted By:");  
+        System.out.println(user);  
+    }  
+}  
+}  
+```
+
+### Answer.java
+
+```
+public class Answer {  
+  private int id;  
+  private String answer;  
+  private Date postedDate;
+  
+  public Answer() {}  
+  
+  public Answer(int id, String answer, Date postedDate) {  
+    this.id = id;  
+    this.answer = answer;  
+    this.postedDate = postedDate;  
+  }  
+  
+  public String toString(){  
+    return "Id:" + "d + " Answer: " + answer + " Posted Date: " + postedDate;  
+  }  
+}  
+```
+
+### User.java
+
+```
+public class User {  
+  private int id;  
+  private String name,email;  
+  
+  public User() {}  
+  
+  public User(int id, String name, String email) {  
+    this.id = id;  
+    this.name = name;  
+    this.email = email;  
+  }  
+  
+  public String toString(){  
+    return "Id: " + id + " Name: " + name + " Email Id: " + email;  
+  }  
+}  
+```
+
+### applicationContext.xml
+The **key-ref** and **value-ref** attributes of entry element is used to define the reference of bean in the map.
