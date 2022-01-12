@@ -36,7 +36,7 @@ public class Question {
     System.out.println(id + " " + name);  
     System.out.println("answers are:");  
     Iterator<String> itr = answers.iterator();  
-    while(itr.hasNext()){  
+    while (itr.hasNext()) {  
         System.out.println(itr.next());  
     }  
   }  
@@ -118,7 +118,7 @@ public class Question {
     System.out.println(id + " " + name);  
     System.out.println("answers are:");  
     Iterator<Answer> itr = answers.iterator();  
-    while(itr.hasNext()){  
+    while (itr.hasNext()) {  
         System.out.println(itr.next());  
     }  
   }  
