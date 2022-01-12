@@ -53,7 +53,7 @@ The list element of constructor-arg is used here to define the list.
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
   
-  <bean id="question" class="io.spring.framework.primitiveDep.Question">  
+  <bean id="question" class="io.spring.framework.Question">  
     <constructor-arg value="3" />  
     <constructor-arg value="What is java?" />
     <constructor-arg>  
@@ -159,19 +159,19 @@ The **ref** element is used to define the reference of another bean. Here, we ar
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-  <bean id="answer1" class="io.spring.framework.objectDep.Answer">  
+  <bean id="answer1" class="io.spring.framework.Answer">  
     <constructor-arg value="1" /> 
     <constructor-arg value="Java is a programming language" />  
     <constructor-arg value="Hakim" />
   </bean>  
   
-  <bean id="answer2" class="io.spring.framework.objectDep.Answer">  
+  <bean id="answer2" class="io.spring.framework.Answer">  
     <constructor-arg value="2" />
     <constructor-arg value="Java is a Platform" />
     <constructor-arg value="Orif" />
   </bean>  
   
-  <bean id="question" class="io.spring.framework.objectDep.Question">  
+  <bean id="question" class="io.spring.framework.Question">  
     <constructor-arg value="3" />  
     <constructor-arg value="What is java?" />  
     <constructor-arg>  
@@ -247,7 +247,7 @@ The entry attribute of map is used to define the key and value information.
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
   
-  <bean id="question" class="io.spring.framework.map.primitive.Question">  
+  <bean id="question" class="io.spring.framework.Question">  
     <constructor-arg value="11" />  
     <constructor-arg value="What is Java?" />
     <constructor-arg>  
@@ -301,22 +301,24 @@ public class Question {
     this.answers = answers;  
   }  
   
-  public void displayInfo(){  
-    System.out.println("question id: " + id);  
-    System.out.println("question name: " + name);  
-    System.out.println("Answers....");  
-    Set<Entry<Answer, User>> set = answers.entrySet();  
-    Iterator<Entry<Answer, User>> itr = set.iterator();  
-    while (itr.hasNext()) {  
-        Entry<Answer, User> entry = itr.next();  
-        Answer ans = entry.getKey();  
-        User user = entry.getValue();  
-        System.out.println("Answer Information:");  
-        System.out.println(ans);  
-        System.out.println("Posted By:");  
-        System.out.println(user);  
-    }  
-}  
+  public void displayInfo(){
+        System.out.println("question id: " + id);
+        System.out.println("question name: " + name);
+        System.out.println("Answers....");
+        Set<Map.Entry<Answer, User>> set = answers.entrySet();
+        Iterator<Map.Entry<Answer, User>> itr = set.iterator();
+        while (itr.hasNext()) {
+            Map.Entry<Answer, User> entry = itr.next();
+            Answer ans = entry.getKey();
+            User user = entry.getValue();
+            System.out.println("Answer Information:");
+            System.out.println(ans);
+            System.out.println("Posted By:");
+            System.out.println(user);
+        }
+    }
+  }
+  
 }  
 ```
 
@@ -337,7 +339,7 @@ public class Answer {
   }  
   
   public String toString(){  
-    return "Id:" + "d + " Answer: " + answer + " Posted Date: " + postedDate;  
+    return "Id:" + id + " Answer: " + answer + " Posted Date: " + postedDate;  
   }  
 }  
 ```
@@ -365,3 +367,60 @@ public class User {
 
 ### applicationContext.xml
 The **key-ref** and **value-ref** attributes of entry element is used to define the reference of bean in the map.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean id="answer1" class="io.spring.framework.Answer">  
+    <constructor-arg value="1" />  
+    <constructor-arg value="Java is a Programming Language" />  
+    <constructor-arg value="12/12/2001" />  
+  </bean>  
+  
+  <bean id="answer2" class="io.spring.framework.Answer">  
+    <constructor-arg value="2" />  
+    <constructor-arg value="Java is a Platform" />  
+    <constructor-arg value="12/12/2003" />  
+  </bean>  
+  
+  <bean id="user1" class="io.spring.framework.User">  
+    <constructor-arg value="1" />  
+    <constructor-arg value="Hakim Bahramov" />  
+    <constructor-arg value="abduhakim.bahramov@gmail.com" />  
+  </bean>  
+  
+  <bean id="user2" class="io.spring.framework.User">  
+    <constructor-arg value="2" />  
+    <constructor-arg value="Xurshida Bahramova" />  
+    <constructor-arg value="khurshida.bakhramova@gmail.com" />  
+  </bean>  
+  
+  <bean id="question" class="io.spring.framework.Question">  
+    <constructor-arg value="1" />  
+    <constructor-arg value="What is Java?" />  
+    <constructor-arg>  
+      <map>  
+        <entry key-ref="answer1" value-ref="user1" />  
+        <entry key-ref="answer2" value-ref="user2" />  
+      </map>  
+    </constructor-arg>  
+  </bean>  
+
+</beans>
+```
+
+### Main.java
+This class gets the bean from the applicationContext.xml file and calls the displayInfo() method to display the information.
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Question question = (Question) context.getBean("question");
+        question.displayInfo();
+    }
+}
+```
