@@ -5,7 +5,7 @@ It can be:
 - **List**
 - **Set**
 - **Map**
-- 
+
 Each collection can have string based and non-string based values.
 In this example, we are taking the example of Forum where One question can have multiple answers. There are three pages:
 
