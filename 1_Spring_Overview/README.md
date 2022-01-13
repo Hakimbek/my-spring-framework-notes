@@ -36,6 +36,16 @@ The Spring framework comprises many modules such as core, beans, context, expres
   - The aspects module provides support for integration with *AspectJ*.
   - The instrumentation module provides support for class instrumentation and classloader implementations.
 ### - **Data Access / Integration**
+  - **JDBC**
+    - The JDBC module provides a JDBC-abstraction layer that removes the need for tedious JDBC related coding.
+  - **ORM**
+    - The ORM module provides integration layers for popular object-relational mapping APIs, including JPA, JDO, Hibernate, and iBatis.
+  - **OXM**
+    - The OXM module provides an abstraction layer that supports Object/XML mapping implementations for JAXB, Castor, XMLBeans, JiBX and XStream.
+  - **JMS**
+    - The Java Messaging Service JMS module contains features for producing and consuming messages.
+  - **Transaction**
+    - The Transaction module supports programmatic and declarative transaction management for classes that implement special interfaces and for all your POJOs.
   - This group comprises *JDBC, ORM, OXM, JMS* and *Transaction modules*. These modules basically provide support to interact with the database.
 ### - **Web**
   - This group comprises *Web, Web-Servlet, Web-Struts* and *Web-Portlet*. These modules provide support to create web applications.
