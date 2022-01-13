@@ -1,79 +1,85 @@
-# IoC Container
-The IoC container is responsible for instantiating, configuring and assembling the objects. The IoC container gets information from the XML file and works accordingly. The main tasks performed by IoC container are:
-- *to instantiate the application class*
-- *to configure the object*
-- *to assemble the dependencies between the objects*
+# Dependency Injection with Factory Method in Spring
+Spring framework provides facility to inject bean using factory method. To do so, we can use two attributes of bean element.
 
-### There are two types of IoC containers. They are:
-- **BeanFactory**
-- **ApplicationContext**
+- **factory-method:** represents the factory method that will be invoked to inject the bean.
+- **factory-bean:** represents the reference of the bean by which factory method will be invoked. It is used if factory method is non-static.
 
-### Difference between BeanFactory and the ApplicationContext
-The *org.springframework.beans.factory.BeanFactory* and the *org.springframework.context.ApplicationContext* interfaces act as the IoC container. The ApplicationContext interface is built on top of the BeanFactory interface. It adds some extra functionality than BeanFactory such as simple integration with Spring's AOP, message resource handling (for I18N), event propagation and application layer specific context (e.g. WebApplicationContext) for web applications. So it is better to use ApplicationContext than BeanFactory.
-
-### Using BeanFactory
-The XmlBeanFactory is the implementation class for the BeanFactory interface. To use the BeanFactory, we need to create the instance of XmlBeanFactory class as given below:
+A method that returns instance of a class is called **factory method**.
 
 ```java
-Resource resource = new ClassPathResource("applicationContext.xml");  
-BeanFactory factory = new XmlBeanFactory(resource);
-```
-
-The constructor of the XmlBeanFactory class receives the Resource object, so we need to pass the resource object to create the object of BeanFactory.
-
-### Using ApplicationContext
-The ClassPathXmlApplicationContext class is the implementation class of the ApplicationContext interface. We need to instantiate the ClassPathXmlApplicationContext class to use the ApplicationContext as given below:
-
-```java
-ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");  
-```
-
-The constructor of the ClassPathXmlApplicationContext class receives a string, so we can pass the name of the xml file to create the instance of ApplicationContext.
-
-# Dependency Injection in Spring
-Dependency Injection (DI) is a design pattern that removes the dependency from the programming code so that it can be easy to manage and test the application. 
-Dependency Injection makes our programming code loosely coupled. In such case we write the code as:
-
-```java
-class Employee {  
-  Address address;  
-  
-  // Constructor
-  Employee(Address address) {  
-    this.address = address;  
-  } 
-  
-  // Setter
-  public void setAddress(Address address) {  
-    this.address = address;  
+public class A {  
+  public static A getA() { //factory method  
+    return new A();  
   }  
-  
 }  
 ```
 
-In such case, instance of Address class is provided by external souce such as XML file either by constructor or setter method.
+## Factory Method Types
+There can be three types of factory method:
 
-### Spring framework provides two ways to inject dependency
-- By Constructor
-- By Setter method
+1. A **static factory method** that returns instance of **its own** class. It is used in singleton design pattern.
 
-# Dependency Injection by Constructor
-We can inject the dependency by constructor. The `<constructor-arg>` subelement of `<bean>` is used for constructor injection. Here we are going to inject
+```xml
+<bean id="a" class="io.spring.framework.A" factory-method="getA" />
+```
 
-- primitive and String-based values
-- Dependent object (contained object)
-- Collection values etc.
+2. A **static factory method** that returns an instance of **another** class. It is used when an instance is not known and decided at runtime.
 
-# Dependency Injection by setter method
-We can inject the dependency by setter method also. The `<property>` subelement of `<bean>` is used for setter injection. Here we are going to inject
+```xml
+<bean id="b" class="io.spring.framework.A" factory-method="getB" />
+```
 
-- primitive and String-based values
-- Dependent object (contained object)
-- Collection values etc.
+3. A **non-static factory method** that returns instance of **another** class. It is used when an instance is not known and decided at runtime.
 
-# Difference between constructor and setter injection
-1. **Partial dependency:** can be injected using setter injection but it is not possible by constructor. Suppose there are 3 properties in a class, having 3 arg constructor and setter methods. In such a case, if you want to pass information for only one property, it is possible by the setter method only. 
-2. **Overriding:** Setter injection overrides the constructor injection. If we use both constructor and setter injection, IOC containers will use the setter injection.
-3. **Changes:** We can easily change the value by setter injection. It doesn't always create a new bean instance like a constructor. So setter injection is more flexible than constructor injection.
+```xml
+<bean id="a" class="io.spring.framework.A"></bean>  
+<bean id="b" class="io.spring.framework.A" factory-method="getB" factory-bean="a"></bean>
+```
 
+---
 
+## Type 1
+Let's see the full example to inject dependency using factory method in spring. To create this example, we have created 3 files.
+
+- A.java
+- applicationContext.xml
+- Main.java
+
+### A.java
+This class is a singleton class.
+
+```java
+public class A {  
+  private static final A obj = new A();  
+  
+  private A() {
+    System.out.println("private constructor");
+  }
+  
+  public static A getA() {  
+    System.out.println("factory method ");  
+    return obj;  
+  }
+  
+  public void msg(){  
+    System.out.println("hello user");  
+  }  
+}  
+```
+
+### applicationContext.xml
+
+### Test.java
+This class gets the bean from the applicationContext.xml file and calls the msg method.
+
+```
+public class Main {
+  public static void main(String[] args) {  
+
+    ApplicationContext context=new ClassPathXmlApplicationContext("applicationContext.xml");  
+    A a = (A) context.getBean("a");  
+    a.msg();  
+    
+  }  
+}  
+```
