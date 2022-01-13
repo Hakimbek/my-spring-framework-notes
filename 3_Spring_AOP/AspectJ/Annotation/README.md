@@ -23,7 +23,7 @@ Let's try the understand the pointcut expressions by the examples given below:
 ```
 It will be applied on all the public methods.
 
---
+---
 
 ```java
 @Pointcut("execution(public Operation.*(..))")  
