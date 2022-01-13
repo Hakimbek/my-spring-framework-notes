@@ -69,6 +69,17 @@ public class A {
 
 ### applicationContext.xml
 
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="a" class="io.spring.framework.A" factory-method="getA" />
+
+</beans>
+```
+
 ### Test.java
 This class gets the bean from the applicationContext.xml file and calls the msg method.
 
@@ -76,10 +87,137 @@ This class gets the bean from the applicationContext.xml file and calls the msg 
 public class Main {
   public static void main(String[] args) {  
 
-    ApplicationContext context=new ClassPathXmlApplicationContext("applicationContext.xml");  
+    ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");  
     A a = (A) context.getBean("a");  
     a.msg();  
     
   }  
 }  
+```
+
+---
+
+## Type 2
+Let's see the simple code to inject the dependency by static factory method that returns the instance of another class.
+To create this example, we have created 6 files.
+
+- Printable.java
+- A.java
+- B.java
+- PrintableFactory.java
+- applicationContext.xml
+- Main.java
+
+### Printable.java
+
+```java
+public interface Printable {  
+  void print();  
+}  
+```
+
+### A.java
+
+```java
+public class A implements Printable{  
+   
+    @Override  
+    public void print() {  
+        System.out.println("hello a");  
+    }  
+  
+}  
+```
+
+### B.java
+
+```java
+public class B implements Printable{  
+   
+    @Override  
+    public void print() {  
+        System.out.println("hello b");  
+    }  
+  
+}  
+```
+
+### PrintableFactory.java
+
+```java
+public class PrintableFactory {  
+  public static Printable getPrintable(){  
+    // return new B();  
+      return new A(); //return any one instance, either A or B  
+  }  
+}  
+```
+
+### applicationContext.xml
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="printableFactory" class="io.spring.framework.PrintableFactory" factory-method="getPrintable" />
+
+</beans>
+```
+
+### Main.java
+This class gets the bean from the applicationContext.xml file and calls the print() method.
+
+```java
+public class Main {  
+  public static void main(String[] args) {  
+    ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");  
+    Printable p = (Printable) context.getBean("printableFactory");  
+    p.print();  
+  }  
+}  
+```
+
+---
+
+## Type 3
+Let's see the example to inject the dependency by non-static factory method that returns the instance of another class.
+
+To create this example, we have created 6 files.
+
+- Printable.java
+- A.java
+- B.java
+- PrintableFactory.java
+- applicationContext.xml
+- Main.java
+
+All files are same as previous, you need to change only 2 files: PrintableFactory and applicationContext.xml.
+
+### PrintableFactory.java
+
+```java
+public class PrintableFactory {  
+
+  //non-static factory method  
+  public Printable getPrintable(){  
+    return new A(); //return any one instance, either A or B  
+  }  
+  
+}  
+```
+
+### applicationContext.xml
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="printableFactory" class="com.javatpoint.PrintableFactory" />
+    <bean id="printableFactoryObject" class="io.spring.framework.PrintableFactory" factory-method="getPrintable" factory-bean="printableFactory" />
+
+</beans>
 ```
