@@ -23,12 +23,14 @@ The Spring framework comprises many modules such as core, beans, context, expres
 ### - **Test**
   - This layer provides support for testing with *JUnit* and *TestNG*.
 ### - **Spring Core Container**
-  - **Core and Beans**
-    - These modules provide *IOC* and *Dependency Injection* features.
+  - **Core**
+    - The Core module provides the fundamental parts of the framework, including the IoC and Dependency Injection features.
+  - **Beans**
+    - The Bean module provides BeanFactory, which is a sophisticated implementation of the factory pattern.
   - **Context**
-    - This module supports *internationalization (I18N), EJB, JMS, Basic Remoting*.
+    - The Context module builds on the solid base provided by the Core and Beans modules and it is a medium to access any objects defined and configured. The                       ApplicationContext interface is the focal point of the Context module
   - **Expression Language**
-    - It is an extension to the EL defined in *JSP*. It provides support for setting and getting property values, method invocation, accessing collections and indexers, named variables, logical and arithmetic operators, retrieval of objects by name, etc.
+    - The SpEL module provides a powerful expression language for querying and manipulating an object graph at runtime.
 ### - **AOP, Aspects and Instrumentation**
   - These modules support aspect oriented programming implementation where you can use *Advice, Pointcuts etc.* to decouple the code.
   - The aspects module provides support for integration with *AspectJ*.
