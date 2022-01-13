@@ -20,7 +20,7 @@ The Spring framework comprises many modules such as core, beans, context, expres
 
 ![This is spring modules](image/spring-modules.png)
 
-## - **Data Access / Integration**
+## **Data Access / Integration**
   - ### JDBC
     - The JDBC module provides a JDBC-abstraction layer that removes the need for tedious JDBC related coding.
   - ORM
@@ -32,7 +32,7 @@ The Spring framework comprises many modules such as core, beans, context, expres
   - ### Transaction
     - The Transaction module supports programmatic and declarative transaction management for classes that implement special interfaces and for all your POJOs.
 
-## - **Web**
+## **Web**
   - ### Web
     - The Web module provides basic web-oriented integration features such as multipart file-upload functionality and the initialization of the IoC container using servlet         listeners and a web-oriented application context.
   - ### Web-MVC
