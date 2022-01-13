@@ -66,21 +66,21 @@ In such case, instance of Address class is provided by external souce such as XM
 - By Constructor
 - By Setter method
 
-# Dependency Injection by Constructor
+## Dependency Injection by Constructor
 We can inject the dependency by constructor. The `<constructor-arg>` subelement of `<bean>` is used for constructor injection. Here we are going to inject
 
 - primitive and String-based values
 - Dependent object (contained object)
 - Collection values etc.
 
-# Dependency Injection by setter method
+## Dependency Injection by setter method
 We can inject the dependency by setter method also. The `<property>` subelement of `<bean>` is used for setter injection. Here we are going to inject
 
 - primitive and String-based values
 - Dependent object (contained object)
 - Collection values etc.
 
-# Difference between constructor and setter injection
+## Difference between constructor and setter injection
 1. **Partial dependency:** can be injected using setter injection but it is not possible by constructor. Suppose there are 3 properties in a class, having 3 arg constructor and setter methods. In such a case, if you want to pass information for only one property, it is possible by the setter method only. 
 2. **Overriding:** Setter injection overrides the constructor injection. If we use both constructor and setter injection, IOC containers will use the setter injection.
 3. **Changes:** We can easily change the value by setter injection. It doesn't always create a new bean instance like a constructor. So setter injection is more flexible than constructor injection.
