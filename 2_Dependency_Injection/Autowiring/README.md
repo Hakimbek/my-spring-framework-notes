@@ -157,6 +157,7 @@ If you have 3 constructors in a class, zero-arg, one-arg and two-arg then inject
 <bean id="b" class="io.spring.framework.B"/>
 <bean id="a" class="io.spring.framework.A" autowire="constructor"/>
 ```
+---
 
 ### 4. no autowiring mode
 In case of no autowiring mode, spring container doesn't inject the dependency by autowiring.
