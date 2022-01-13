@@ -77,5 +77,11 @@ It is the process of linking aspect with other application types or objects to c
 - Spring AOP
 - JBoss AOP
 
+The Spring Framework recommends you to use **Spring AspectJ AOP** implementation over the **Spring 1.2 old style dtd based AOP** implementation because it provides you more control and it is easy to use.
+
+There are two ways to use Spring AOP AspectJ implementation:
+
+- **By annotation**
+- **By xml configuration (schema based)**
 
 
