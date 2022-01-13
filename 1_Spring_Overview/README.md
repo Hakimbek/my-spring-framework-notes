@@ -23,23 +23,23 @@ The Spring framework comprises many modules such as core, beans, context, expres
 ## - **Data Access / Integration**
   - ### JDBC
     - The JDBC module provides a JDBC-abstraction layer that removes the need for tedious JDBC related coding.
-  - **ORM**
+  - ORM
     - The ORM module provides integration layers for popular object-relational mapping APIs, including JPA, JDO, Hibernate, and iBatis.
-  - **OXM**
+  - ### OXM
     - The OXM module provides an abstraction layer that supports Object/XML mapping implementations for JAXB, Castor, XMLBeans, JiBX and XStream.
-  - **JMS**
+  - ### JMS
     - The Java Messaging Service JMS module contains features for producing and consuming messages.
-  - **Transaction**
+  - ### Transaction
     - The Transaction module supports programmatic and declarative transaction management for classes that implement special interfaces and for all your POJOs.
 
 ## - **Web**
-  - **Web**
+  - ### Web
     - The Web module provides basic web-oriented integration features such as multipart file-upload functionality and the initialization of the IoC container using servlet         listeners and a web-oriented application context.
-  - **Web-MVC**
+  - ### Web-MVC
     - The Web-MVC module contains Spring's Model-View-Controller (MVC) implementation for web applications.
-  - **Web-Socket**
+  - ### Web-Socket
     - The Web-Socket module provides support for WebSocket-based, two-way communication between the client and the server in web applications.
-  - **Web-Portlet**
+  - ### Web-Portlet
     - The Web-Portlet module provides the MVC implementation to be used in a portlet environment and mirrors the functionality of Web-Servlet module.
 
 
