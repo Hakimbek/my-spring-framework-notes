@@ -91,3 +91,98 @@ public class Main {
 
 ### Printing additional information in MethodBeforeAdvice
 We can print additional information like method name, method argument, target object, target object class name, proxy class etc.
+
+## 2. AfterReturningAdvice Example
+
+### A.java
+Same as in the previous example.
+
+### AfterAdvisor.java
+Now, create the advisor class that implements AfterReturningAdvice interface.
+
+```java
+public class AfterAdvisor implements AfterReturningAdvice {  
+    @Override  
+    public void afterReturning(Object returnValue, Method method, Object[] args, Object target) throws Throwable {  
+        System.out.println("additional concern after returning advice");  
+    }  
+}  
+```
+
+### applicationContext.xml
+Create the xml file as in the previous example, you need to change only the advisor class here.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="a" class="io.spring.framework.A"/>
+    <bean id="afterAdvisor" class="io.spring.framework.AfterAdvisor"/>
+
+    <bean id="proxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="a"/>
+        <property name="interceptorNames">
+            <list>
+                <value>afterAdvisor</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>
+```
+
+### Main.java
+Same as in the previous example.
+
+## MethodInterceptor (AroundAdvice) Example
+
+### A.java
+Same as in the previous example.
+
+### AroundAdvisor.java
+Now, create the advisor class that implements MethodInterceptor interface.
+
+```java
+public class AroundAdvisor implements MethodInterceptor {  
+  
+     @Override
+    public Object invoke(MethodInvocation invocation) throws Throwable {
+        Object obj;
+        System.out.println("additional concern before actual logic");
+        obj = invocation.proceed();
+        System.out.println("additional concern after actual logic");
+        return obj;
+    }
+  
+}  
+```
+
+### applicationContext.xml
+Create the xml file as in the previous example, you need to change only the advisor class here.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="a" class="io.spring.framework.A"/>
+    <bean id="aroundAdvisor" class="io.spring.framework.AroundAdvisor"/>
+
+    <bean id="proxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="a"/>
+        <property name="interceptorNames">
+            <list>
+                <value>aroundAdvisor</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>
+```
+
+### Main.java
+Same as in the previous example.
+
