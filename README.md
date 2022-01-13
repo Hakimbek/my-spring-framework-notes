@@ -15,5 +15,5 @@
 - ### [Spring AOP](3_Spring_AOP/README.md)
   - ### [Spring old Style AOP](3_Spring_AOP/Old_Style/README.md)
   - ### Spring AspectJ AOP
-    - By Annotation
-    - By XML configuration
+    - [By Annotation](3_Spring_AOP/AspectJ/Annotation/README.md)
+    - [By XML configuration](3_Spring_AOP/AspectJ/XML/README.md)
