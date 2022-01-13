@@ -38,11 +38,11 @@ We don't have to call methods from the method. Now we can define the additional 
 
 In future, if client says to remove the notifier functionality, we need to change only in the xml file. So, maintenance is easy in AOP.
 
-### AOP Concepts and Terminology
-**Join point**
+## AOP Concepts and Terminology
+### Join point
 Join point is any point in your program such as method execution, exception handling, field access etc. Spring supports only method execution join point.
 
-**Advice**
+### Advice
 Advice represents an action taken by an aspect at a particular join point. There are different types of advices:
 
 - Before Advice: it executes before a join point.
@@ -51,25 +51,25 @@ Advice represents an action taken by an aspect at a particular join point. There
 - After (finally) Advice: it executes after a join point regardless of join point exit whether normally or exceptional return.
 - Around Advice: It executes before and after a join point.
 
-**Pointcut**
+### Pointcut
 It is an expression language of AOP that matches join points.
 
-**Introduction**
+### Introduction
 It means introduction of additional method and fields for a type. It allows you to introduce new interface to any advised object.
 
-**Target Object**
+### Target Object
 It is the object i.e. being advised by one or more aspects. It is also known as proxied object in spring because Spring AOP is implemented using runtime proxies.
 
-**Aspect**
+### Aspect
 It is a class that contains advices, joinpoints etc.
 
-**Interceptor**
+### Interceptor
 It is an aspect that contains only one advice.
 
-**AOP Proxy**
+### AOP Proxy
 It is used to implement aspect contracts, created by AOP framework. It will be a JDK dynamic proxy or CGLIB proxy in spring framework.
 
-**Weaving**
+### Weaving
 It is the process of linking aspect with other application types or objects to create an advised object. Weaving can be done at compile time, load time or runtime. Spring AOP performs weaving at runtime.
 
 ### AOP Implementations
