@@ -11,3 +11,4 @@
     - [Injection with Dependent Object](2_Dependency_Injection/Setter_Injection/Injection_with_Dependant_Object/README.md)
     - [Injection with Collection](2_Dependency_Injection/Setter_Injection/Injection_with_Collection/README.md)
   - ### [Autowiring](2_Dependency_Injection/Autowiring/README.md)
+  - ### [Factory Method](2_Dependency_Injection/Factory_Method/README.md)
