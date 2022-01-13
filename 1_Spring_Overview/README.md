@@ -42,11 +42,15 @@ The Spring framework comprises many modules such as core, beans, context, expres
 - ### Web-Portlet
   - The Web-Portlet module provides the MVC implementation to be used in a portlet environment and mirrors the functionality of Web-Servlet module.
 
-### Miscellaneous
-  - These modules support aspect oriented programming implementation where you can use *Advice, Pointcuts etc.* to decouple the code.
-  - The aspects module provides support for integration with *AspectJ*.
-  - The instrumentation module provides support for class instrumentation and classloader implementations.
-
+## Miscellaneous
+- ### AOP
+  - The AOP module provides an aspect-oriented programming implementation allowing you to define method-interceptors and pointcuts to cleanly decouple code that implements       functionality that should be separated.
+- ### Aspect
+  - The Aspects module provides integration with AspectJ, which is again a powerful and mature AOP framework.
+- ### Instrumentation
+  - The Instrumentation module provides class instrumentation support and class loader implementations to be used in certain application servers.
+- ### Messaging
+  - The Messaging module provides support for STOMP as the WebSocket sub-protocol to use in applications. It also supports an annotation programming model for routing and          processing STOMP messages from WebSocket clients.
 
 ## Spring Core Container
 - ### Core
