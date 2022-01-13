@@ -186,3 +186,72 @@ Create the xml file as in the previous example, you need to change only the advi
 ### Main.java
 Same as in the previous example.
 
+## 4. ThrowsAdvice Example
+
+### Validator.java
+Create a class that contains actual business logic.
+
+```java
+public class Validator {  
+    public void validate(int age) throws Exception {  
+        if (age < 18) {  
+            throw new ArithmeticException("Not Valid Age");  
+        } else {  
+            System.out.println("vote confirmed");  
+        }  
+    }  
+}  
+```
+
+### ThrowsAdvisor.java
+Now, create the advisor class that implements ThrowsAdvice interface.
+
+```java
+public class ThrowsAdvisor implements ThrowsAdvice {  
+    public void afterThrowing(Exception ex){  
+        System.out.println("additional concern if exception occurs");  
+    }  
+}  
+```
+
+### applicationContext.xml
+Create the xml file as in the previous example, you need to change only the Validator class and advisor class.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="validator" class="io.spring.framework.Validator"/>
+    <bean id="throwAdvisor" class="io.spring.framework.ThrowAdvisor"/>
+
+    <bean id="proxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="validator"/>
+        <property name="interceptorNames">
+            <list>
+                <value>throwAdvisor</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>
+```
+
+### Main.java
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Validator validator = (Validator) applicationContext.getBean("proxy");
+
+        try {
+            validator.validate(17);
+        } catch (Exception e) {
+            System.out.println("Exception");
+        }
+    }
+}
+```
+
