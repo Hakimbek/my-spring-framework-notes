@@ -72,7 +72,7 @@ It is used to implement aspect contracts, created by AOP framework. It will be a
 ### Weaving
 It is the process of linking aspect with other application types or objects to create an advised object. Weaving can be done at compile time, load time or runtime. Spring AOP performs weaving at runtime.
 
-### AOP Implementations
+## AOP Implementations
 - AspectJ
 - Spring AOP
 - JBoss AOP
