@@ -72,7 +72,7 @@ public class A {
 ### Test.java
 This class gets the bean from the applicationContext.xml file and calls the msg method.
 
-```
+```java
 public class Main {
   public static void main(String[] args) {  
 
