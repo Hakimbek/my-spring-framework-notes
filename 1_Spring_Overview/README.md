@@ -1,5 +1,5 @@
 # Spring Framework
-Spring is a lightweight framework. It can be thought of as a ***framework of frameworks*** because it provides support to various frameworks such as *Struts, Hibernate, Tapestry, EJB, JSF, etc*. The framework, in broader sense, can be defined as a structure where we find solution of the various technical problems.
+Spring is a lightweight framework. It can be thought of as a ***framework of frameworks*** because it provides support to various frameworks. The framework, in broader sense, can be defined as a structure where we find solution of the various technical problems.
 ## Advantages of Spring Framework
 ### 1. **Predefined Templates**
    - Spring framework provides templates for JDBC, Hibernate, JPA etc. technologies. So there is no need to write too much code. It hides the basic steps of these technologies.
