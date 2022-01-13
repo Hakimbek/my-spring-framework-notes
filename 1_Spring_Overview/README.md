@@ -42,6 +42,11 @@ The Spring framework comprises many modules such as core, beans, context, expres
 - ### Web-Portlet
   - The Web-Portlet module provides the MVC implementation to be used in a portlet environment and mirrors the functionality of Web-Servlet module.
 
+### Miscellaneous
+  - These modules support aspect oriented programming implementation where you can use *Advice, Pointcuts etc.* to decouple the code.
+  - The aspects module provides support for integration with *AspectJ*.
+  - The instrumentation module provides support for class instrumentation and classloader implementations.
+
 
 ## Spring Core Container
 - ### Core
@@ -52,11 +57,6 @@ The Spring framework comprises many modules such as core, beans, context, expres
   - The Context module builds on the solid base provided by the Core and Beans modules and it is a medium to access any objects defined and configured. The                       ApplicationContext interface is the focal point of the Context module.
 - ### Expression Language
   - The SpEL module provides a powerful expression language for querying and manipulating an object graph at runtime.
-
-### - **AOP, Aspects and Instrumentation**
-  - These modules support aspect oriented programming implementation where you can use *Advice, Pointcuts etc.* to decouple the code.
-  - The aspects module provides support for integration with *AspectJ*.
-  - The instrumentation module provides support for class instrumentation and classloader implementations.
 
 ## Test
 - This layer provides support for testing with *JUnit* and *TestNG*.
