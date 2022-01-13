@@ -7,7 +7,7 @@ Let's see the xml elements that are used to define advice.
 - **aop:around** It is applied before and after calling the actual business logic method.
 - **aop:after-throwing** It is applied if actual business logic method throws exception.
 
-## 1. aop:before Example
+# 1. aop:before Example
 The AspectJ Before Advice is applied before the actual business logic method. You can perform any operation here such as conversion, authentication etc.
 
 ### Operation.java
@@ -91,7 +91,7 @@ public class Main {
 }
 ```
 
-## 2. aop:after example
+# 2. aop:after example
 The AspectJ after advice is applied after calling the actual business logic methods. It can be used to maintain log, security, notification etc.
 
 Here, We are assuming that **Operation.java, TrackOperation.java** and **Test.java** files are same as given in aop:before example.
@@ -121,7 +121,7 @@ Now create the applicationContext.xml file that defines beans.
 </beans>
 ```
 
-## 3. aop:after-returning example
+# 3. aop:after-returning example
 By using after returning advice, we can get the result in the advice.
 
 ### Operation.java
@@ -199,7 +199,7 @@ public class Main {
 }
 ```
 
-## 4. aop:around example
+# 4. aop:around example
 The AspectJ around advice is applied before and after calling the actual business logic methods.
 
 ### Operation.java
@@ -278,7 +278,7 @@ public class Main {
 }
 ```
 
-## 5. aop:after-throwing example
+# 5. aop:after-throwing example
 By using after throwing advice, we can print the exception in the TrackOperation class. Let's see the example of AspectJ AfterThrowing advice.
 
 ### Operation.java
