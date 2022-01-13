@@ -21,7 +21,7 @@ The Spring framework comprises many modules such as core, beans, context, expres
 ![This is spring modules](image/spring-modules.png)
 
 ## - **Data Access / Integration**
-  - **JDBC**
+  - ### JDBC
     - The JDBC module provides a JDBC-abstraction layer that removes the need for tedious JDBC related coding.
   - **ORM**
     - The ORM module provides integration layers for popular object-relational mapping APIs, including JPA, JDO, Hibernate, and iBatis.
