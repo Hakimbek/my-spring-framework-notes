@@ -88,3 +88,6 @@ public class Main {
     }
 }
 ```
+
+### Printing additional information in MethodBeforeAdvice
+We can print additional information like method name, method argument, target object, target object class name, proxy class etc.
