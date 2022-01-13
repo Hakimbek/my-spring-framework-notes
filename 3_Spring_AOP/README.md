@@ -45,11 +45,11 @@ Join point is any point in your program such as method execution, exception hand
 ### Advice
 Advice represents an action taken by an aspect at a particular join point. There are different types of advices:
 
-- Before Advice: it executes before a join point.
-- After Returning Advice: it executes after a joint point completes normally.
-- After Throwing Advice: it executes if method exits by throwing an exception.
-- After (finally) Advice: it executes after a join point regardless of join point exit whether normally or exceptional return.
-- Around Advice: It executes before and after a join point.
+- **Before Advice:** it executes before a join point.
+- **After Returning Advice:** it executes after a joint point completes normally.
+- **After Throwing Advice:** it executes if method exits by throwing an exception.
+- **After (finally) Advice:** it executes after a join point regardless of join point exit whether normally or exceptional return.
+- **Around Advice:** It executes before and after a join point.
 
 ### Pointcut
 It is an expression language of AOP that matches join points.
