@@ -39,7 +39,7 @@ ApplicationContext context = new ClassPathXmlApplicationContext("applicationCont
 
 The constructor of the ClassPathXmlApplicationContext class receives a string, so we can pass the name of the xml file to create the instance of ApplicationContext.
 
-# Dependency Injection in Spring
+## Dependency Injection in Spring
 Dependency Injection (DI) is a design pattern that removes the dependency from the programming code so that it can be easy to manage and test the application. 
 Dependency Injection makes our programming code loosely coupled. In such case we write the code as:
 
