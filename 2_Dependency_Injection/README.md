@@ -11,6 +11,8 @@ The IoC container is responsible for instantiating, configuring and assembling t
 - *to configure the object*
 - *to assemble the dependencies between the objects*
 
+The container gets its instructions on what objects to instantiate, configure, and assemble by reading the configuration metadata provided. The configuration metadata can be represented either by XML, Java annotations, or Java code.
+
 ### There are two types of IoC containers. They are:
 - **BeanFactory**
 - **ApplicationContext**
