@@ -1,81 +1,363 @@
-# Spring AOP
-**Aspect Oriented Programming (AOP)** compliments OOPs in the sense that it also provides modularity. But the key unit of modularity is aspect than class.
+# Spring AOP AspectJ Xml Configuration Example
+Let's see the xml elements that are used to define advice.
 
-AOP breaks the program logic into distinct parts (called concerns). It is used to increase modularity by **cross-cutting** concerns.
+- **aop:before** It is applied before calling the actual business logic method.
+- **aop:after** It is applied after calling the actual business logic method.
+- **aop:after-returning** it is applied after calling the actual business logic method. It can be used to intercept the return value in advice.
+- **aop:around** It is applied before and after calling the actual business logic method.
+- **aop:after-throwing** It is applied if actual business logic method throws exception.
 
-A cross-cutting concern is a concern that can affect the whole application and should be centralized in one location in code as possible, such as transaction management, authentication, logging, security etc.
+## 1. aop:before Example
+The AspectJ Before Advice is applied before the actual business logic method. You can perform any operation here such as conversion, authentication etc.
 
-Why use AOP?
-It provides the pluggable way to dynamically add the additional concern before, after or around the actual logic. Suppose there are 10 methods in a class as given below:
+### Operation.java
+Create a class that contains actual business logic.
 
 ```java
-class A{  
-  public void m1(){...}  
-  public void m2(){...}  
-  public void m3(){...}  
-  public void m4(){...}  
-  public void m5(){...}  
-  public void n1(){...}  
-  public void n2(){...}  
-  public void p1(){...}  
-  public void p2(){...}  
-  public void p3(){...}  
-}  
+public class Operation {
+    public void msg() {
+        System.out.println("msg method invoked");
+    }
+
+    public int m() {
+        System.out.println("m method invoked");
+        return 2;
+    }
+
+    public int k() {
+        System.out.println("k method invoked");
+        return 3;
+    }
+}
 ```
 
-There are 5 methods that starts from m, 2 methods that starts from n and 3 methods that starts from p.
+### TrackOperation.java
+Now, create the aspect class that contains before advice.
 
-### Understanding Scenario
-I have to maintain *log* and *send* notification after calling methods that starts from m.
+```java
+public class TrackOperation {
 
-### Problem without AOP
-We can call methods (that maintains log and sends notification) from the methods starting with m. In such scenario, we need to write the code in all the 5 methods.
+    public void myAdvice(JoinPoint jp) { //it is advice
+        System.out.println("additional concern");
+        //System.out.println("Method Signature: " + jp.getSignature());
+    }
 
-But, if client says in future, I don't have to send notification, you need to change all the methods. It leads to the maintenance problem.
+}
+```
 
-### Solution with AOP
-We don't have to call methods from the method. Now we can define the additional concern like maintaining log, sending notification etc. in the method of a class. Its entry is given in the xml file.
+### applicationContext.xml
+Now create the applicationContext.xml file that defines beans.
 
-In future, if client says to remove the notifier functionality, we need to change only in the xml file. So, maintenance is easy in AOP.
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
-## AOP Concepts and Terminology
-### Join point
-Join point is any point in your program such as method execution, exception handling, field access etc. Spring supports only method execution join point.
+    <aop:aspectj-autoproxy/>
 
-### Advice
-Advice represents an action taken by an aspect at a particular join point. There are different types of advices:
+    <bean id="operationBean" class="io.spring.framework.Operation"/>
+    <bean id="trackAspect" class="io.spring.framework.TrackOperation"/>
 
-- **Before Advice:** it executes before a join point.
-- **After Returning Advice:** it executes after a joint point completes normally.
-- **After Throwing Advice:** it executes if method exits by throwing an exception.
-- **After (finally) Advice:** it executes after a join point regardless of join point exit whether normally or exceptional return.
-- **Around Advice:** It executes before and after a join point.
+    <aop:config>
+        <aop:aspect id="myAspect" ref="trackAspect" >
+            <!-- @Before -->
+            <aop:pointcut id="pointCutBefore" expression="execution(* io.spring.framework.Operation.*(..))" />
+            <aop:before method="myAdvice" pointcut-ref="pointCutBefore" />
+        </aop:aspect>
+    </aop:config>
 
-### Pointcut
-It is an expression language of AOP that matches join points.
+</beans>
+```
 
-### Introduction
-It means introduction of additional method and fields for a type. It allows you to introduce new interface to any advised object.
+### Main.java
+Now, let's call the actual method.
 
-### Target Object
-It is the object i.e. being advised by one or more aspects. It is also known as proxied object in spring because Spring AOP is implemented using runtime proxies.
+```java
+public class Main {
+    public static void main(String[] args) {
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Operation e = (Operation) context.getBean("operationBean");
 
-### Aspect
-It is a class that contains advices, joinpoints etc.
+        System.out.println("calling msg...");
+        e.msg();
 
-### Interceptor
-It is an aspect that contains only one advice.
+        System.out.println("calling m...");
+        e.m();
 
-### AOP Proxy
-It is used to implement aspect contracts, created by AOP framework. It will be a JDK dynamic proxy or CGLIB proxy in spring framework.
+        System.out.println("calling k...");
+        e.k();
+    }
+}
+```
 
-### Weaving
-It is the process of linking aspect with other application types or objects to create an advised object. Weaving can be done at compile time, load time or runtime. Spring AOP performs weaving at runtime.
+## 2. aop:after example
+The AspectJ after advice is applied after calling the actual business logic methods. It can be used to maintain log, security, notification etc.
 
-## AOP Implementations
-- AspectJ
-- Spring AOP
-- JBoss AOP
+Here, We are assuming that **Operation.java, TrackOperation.java** and **Test.java** files are same as given in aop:before example.
 
+### applicationContext.xml
+Now create the applicationContext.xml file that defines beans.
 
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
+    <aop:aspectj-autoproxy/>
+
+    <bean id="operationBean" class="io.spring.framework.Operation"/>
+    <bean id="trackAspect" class="io.spring.framework.TrackOperation"/>
+
+    <aop:config>
+        <aop:aspect id="myAspect" ref="trackAspect" >
+            <!-- @After -->
+            <aop:pointcut id="pointCutAfter" expression="execution(* io.spring.framework.Operation.*(..))" />
+            <aop:after method="myAdvice" pointcut-ref="pointCutAfter" />
+        </aop:aspect>
+    </aop:config>
+
+</beans>
+```
+
+## 3. aop:after-returning example
+By using after returning advice, we can get the result in the advice.
+
+### Operation.java
+Create the class that contains business logic.
+
+```java
+public class Operation {
+    public int m() {
+        System.out.println("m method invoked");
+        return 2;
+    }
+
+    public int k() {
+        System.out.println("k method invoked");
+        return 3;
+    }
+}
+```
+
+### TrackOperation.java
+Create the aspect class that contains after returning advice.
+
+```java
+public class TrackOperation {
+
+    public void myAdvice(JoinPoint jp, Object result) { //it is advice (after advice)
+        System.out.println("additional concern");
+        System.out.println("Method Signature: " + jp.getSignature());
+        System.out.println("Result in advice: " + result);
+        System.out.println("end of after returning advice...");
+    }
+
+}
+```
+
+### applicationContext.xml
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <aop:aspectj-autoproxy />
+
+    <bean id="operationBean" class="io.spring.framework.Operation"/>
+    <bean id="trackAspect" class="io.spring.framework.TrackOperation"/>
+
+    <aop:config>
+        <aop:aspect id="myAspect" ref="trackAspect" >
+            <!-- @AfterReturning -->
+            <aop:pointcut id="pointCutAfterReturning"   expression="execution(* io.spring.framework.Operation.*(..))" />
+            <aop:after-returning method="myAdvice" returning="result" pointcut-ref="pointCutAfterReturning" />
+        </aop:aspect>
+    </aop:config>
+
+</beans>
+```
+
+### Main.java
+Now create the Test class that calls the actual methods.
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Operation e = (Operation) context.getBean("operationBean");
+
+        System.out.println("calling m...");
+        System.out.println(e.m());
+
+        System.out.println("calling k...");
+        System.out.println(e.k());
+    }
+}
+```
+
+## 4. aop:around example
+The AspectJ around advice is applied before and after calling the actual business logic methods.
+
+### Operation.java
+Create a class that contains actual business logic.
+
+```java
+public class Operation {
+    public void msg() {
+        System.out.println("msg method invoked");
+    }
+
+    public void m() {
+        System.out.println("m method invoked");
+    }
+
+    public void k() {
+        System.out.println("k method invoked");
+    }
+}
+```
+
+### TrackOperation.java
+Create the aspect class that contains around advice.
+
+You need to pass the **PreceedingJoinPoint** reference in the advice method, so that we can proceed the request by calling the proceed() method.
+
+```java
+public class TrackOperation {
+
+    public Object myAdvice(ProceedingJoinPoint pjp) throws Throwable {
+        System.out.println("Additional Concern Before calling actual method");
+        Object obj = pjp.proceed();
+        System.out.println("Additional Concern After calling actual method");
+        return obj;
+    }
+    
+}
+```
+
+### applicationContext.xml
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <aop:aspectj-autoproxy />
+
+    <bean id="opBean" class="io.spring.framework.Operation"/>
+    <bean id="trackAspect" class="io.spring.framework.TrackOperation"/>
+
+    <aop:config>
+        <aop:aspect id="myAspect" ref="trackAspect" >
+            <!-- @Around -->
+            <aop:pointcut id="pointCutAround"   expression="execution(* io.spring.framework.Operation.*(..))" />
+            <aop:around method="myAdvice" pointcut-ref="pointCutAround" />
+        </aop:aspect>
+    </aop:config>
+
+</beans>
+```
+
+### Main.java
+Now create the Test class that calls the actual methods.
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+
+        Operation op = (Operation) context.getBean("opBean");
+        op.msg();
+        op.m();
+    }
+}
+```
+
+## 5. aop:after-throwing example
+By using after throwing advice, we can print the exception in the TrackOperation class. Let's see the example of AspectJ AfterThrowing advice.
+
+### Operation.java
+Create the class that contains business logic.
+
+```java
+public class Operation {
+    public void validate(int age) throws Exception {
+        if (age < 18) {
+            throw new ArithmeticException("Not valid age");
+        } else {
+            System.out.println("Thanks for vote");
+        }
+    }
+}
+```
+
+### TrackOperation.java
+Create the aspect class that contains after throwing advice.
+
+Here, we need to pass the Throwable reference also, so that we can intercept the exception here.
+
+```java
+public class TrackOperation {
+
+    public void myAdvice(JoinPoint jp,Throwable error) { //it is advice
+        System.out.println("additional concern");
+        System.out.println("Method Signature: " + jp.getSignature());
+        System.out.println("Exception is: " + error);
+        System.out.println("end of after throwing advice...");
+    }
+
+}
+```
+
+### applicationContext.xml
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <aop:aspectj-autoproxy />
+    <bean id="operationBean" class="io.spring.framework.Operation"/>
+    <bean id="trackAspect" class="io.spring.framework.TrackOperation"/>
+
+    <aop:config>
+        <aop:aspect id="myAspect" ref="trackAspect" >
+            <!-- @AfterThrowing -->
+            <aop:pointcut id="pointCutAfterThrowing"    expression="execution(* io.spring.framework.Operation.*(..))" />
+            <aop:after-throwing method="myAdvice" throwing="error" pointcut-ref="pointCutAfterThrowing" />
+        </aop:aspect>
+    </aop:config>
+
+</beans>
+```
+
+### Main.java
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Operation op = (Operation) context.getBean("opBean");
+        
+        System.out.println("calling validate...");
+        try {
+            op.validate(19);
+        } catch (Exception e) {
+            System.out.println("Exception");
+        }
+        
+        System.out.println("calling validate again...");
+        try {
+            op.validate(11);
+        } catch (Exception e) {
+            System.out.println("Exception");
+        }
+    }
+}
+```
