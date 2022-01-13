@@ -343,7 +343,7 @@ public class TrackOperation {
 public class Main {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-        Operation op = (Operation) context.getBean("opBean");
+        Operation op = (Operation) context.getBean("operationBean");
         
         System.out.println("calling validate...");
         try {
