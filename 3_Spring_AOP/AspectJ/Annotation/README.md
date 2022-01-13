@@ -53,7 +53,7 @@ It will be applied on all the methods of Operation class that returns int value.
 
 ---
 
-## 1. @Before Example
+# 1. @Before Example
 
 The AspectJ Before Advice is applied before the actual business logic method. You can perform any operation here such as conversion, authentication etc.
 
@@ -120,7 +120,7 @@ public class Main {
 }  
 ```
 
-## 2. @After Example
+# 2. @After Example
 
 The AspectJ after advice is applied after calling the actual business logic methods. It can be used to maintain log, security, notification etc.
 
@@ -143,7 +143,7 @@ public class TrackOperation {
 }  
 ```
 
-## 3. @AfterReturning Example
+# 3. @AfterReturning Example
 By using after returning advice, we can get the result in the advice.
 
 ### Operation.java
@@ -199,7 +199,7 @@ ApplicationContext context = new ClassPathXmlApplicationContext("applicationCont
         System.out.println(e.k());
 ```
 
-## 4. @Around Example
+# 4. @Around Example
 he AspectJ around advice is applied before and after calling the actual business logic methods.
 
 Here, we are assuming that applicationContext.xml file is same as given in **@Before** and **@After** example.
@@ -254,7 +254,7 @@ public class Test{
 }  
 ```
 
-## 5. @AfterThrowing Example
+# 5. @AfterThrowing Example
 By using after throwing advice, we can print the exception in the TrackOperation class. Let's see the example of AspectJ AfterThrowing advice.
 
 ### Operation.java
