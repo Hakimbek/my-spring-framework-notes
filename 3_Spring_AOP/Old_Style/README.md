@@ -10,7 +10,7 @@ There are 4 types of advices supported in Spring1.2 old style AOP implementation
 - **Around Advice** it is executed before and after the actual method call.
 - **Throws Advice** it is executed if actual method throws exception.
 
-## 1. MethodBeforeAdvice Example
+# 1. MethodBeforeAdvice Example
 
 ### A.java
 Create a class that contains actual business logic.
@@ -92,7 +92,7 @@ public class Main {
 ### Printing additional information in MethodBeforeAdvice
 We can print additional information like method name, method argument, target object, target object class name, proxy class etc.
 
-## 2. AfterReturningAdvice Example
+# 2. AfterReturningAdvice Example
 
 ### A.java
 Same as in the previous example.
@@ -136,7 +136,7 @@ Create the xml file as in the previous example, you need to change only the advi
 ### Main.java
 Same as in the previous example.
 
-## 3. MethodInterceptor (AroundAdvice) Example
+# 3. MethodInterceptor (AroundAdvice) Example
 
 ### A.java
 Same as in the previous example.
@@ -186,7 +186,7 @@ Create the xml file as in the previous example, you need to change only the advi
 ### Main.java
 Same as in the previous example.
 
-## 4. ThrowsAdvice Example
+# 4. ThrowsAdvice Example
 
 ### Validator.java
 Create a class that contains actual business logic.
