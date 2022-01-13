@@ -100,6 +100,7 @@ public class Main {
   }  
 }  
 ```
+---
 
 ### 1. byName autowiring mode
 In case of byName autowiring mode, bean id and reference name must be same.
@@ -119,6 +120,7 @@ Let's see the code where we are changing the name of the bean from b to b1.
 <bean id="b1" class="io.spring.framework.B"/>
 <bean id="a" class="io.spring.framework.A" autowire="byName"/>
 ```
+---
 
 ### 2. byType autowiring mode
 In case of byType autowiring mode, bean id and reference name may be different. But there must be only one bean of a type.
@@ -143,6 +145,8 @@ Let's see the code where are many bean of type B.
 ```
 
 In such case, it will throw exception.
+
+---
 
 ### 3. constructor autowiring mode
 In case of constructor autowiring mode, spring container injects the dependency by highest parameterized constructor.
