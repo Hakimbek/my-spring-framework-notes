@@ -63,17 +63,19 @@ hibernateTemplate.save(e1);
 | 7 | Object load(Class entityClass, Serializable id) | returns the persistent object on the basis of given id. |
 | 8 | List loadAll(Class entityClass) | returns the all the persistent objects. |
 
-# Example of Hibernate and spring integration
-We are assuming that you have created the following table inside the database.
+# Spring Data JPA Tutorial
+Spring Data JPA API provides JpaTemplate class to integrate spring application with JPA.
 
-```sql
-CREATE TABLE public.employee
-(
-    id integer,
-    name character varying,
-    salary double precision
-);
-```
+JPA (Java Persistent API) is the sun specification for persisting objects in the enterprise application. It is currently used as the replacement for complex entity beans.
 
-### Employee.java
-It is a simple **POJO** class. Here it works as the persistent class for hibernate.
+The implementation of JPA specification are provided by many vendors such as:
+
+- Hibernate
+- Toplink
+- iBatis
+- OpenJPA etc.
+
+## Advantage of Spring JpaTemplate
+You don't need to write the before and after code for persisting, updating, deleting or searching object such as creating Persistence instance, creating EntityManagerFactory instance, creating EntityTransaction instance, creating EntityManager instance, commiting EntityTransaction instance and closing EntityManager.
+So, it save a lot of code.
+
