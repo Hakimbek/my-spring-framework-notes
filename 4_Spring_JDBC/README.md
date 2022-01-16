@@ -280,7 +280,7 @@ CREATE TABLE public.employee
 ### Employee.java
 This class contains 3 properties with constructors and setter and getters. It defines one extra method **toString()**.
 
-```
+```java
 public class Employee {
     private int id;
 
@@ -352,4 +352,4 @@ public class Main {
 ```
 
 ### pom.xml 
-Remained unchanged as in the previous example
+Remained unchanged as in the previous examples
