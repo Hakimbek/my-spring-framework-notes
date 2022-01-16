@@ -28,8 +28,8 @@
     - [By XML configuration](3_Spring_AOP/AspectJ/XML/README.md)
     
 - ### [Spring JDBC](4_Spring_JDBC/README.md)
-- [JdbcTemplate](4_Spring_JDBC/Jdbc_Template_Example/README.md)
-- [PreparedStatement](4_Spring_JDBC/Prepared_Statement_Example/README.md)
-- [ResultSetExecutor](4_Spring_JDBC/Result_Set_Example/README.md)
-- [RowMapper](4_Spring_JDBC/Row_Mapper_Example/README.md)
-- [NamedParameter](4_Spring_JDBC/Named_Parameter_Example/README.md)
+  - [JdbcTemplate](4_Spring_JDBC/Jdbc_Template_Example/README.md)
+  - [PreparedStatement](4_Spring_JDBC/Prepared_Statement_Example/README.md)
+  - [ResultSetExecutor](4_Spring_JDBC/Result_Set_Example/README.md)
+  - [RowMapper](4_Spring_JDBC/Row_Mapper_Example/README.md)
+  - [NamedParameter](4_Spring_JDBC/Named_Parameter_Example/README.md)
