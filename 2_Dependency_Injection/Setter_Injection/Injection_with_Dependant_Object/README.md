@@ -2,7 +2,7 @@
 Like Constructor Injection, we can inject the dependency of another bean using setters. In such a case, we use the property element. Here, our scenario is Employee HAS-A Address. The Address class object will be termed as the dependent object. Let's see the Address class first:
 
 ### Address.java
-This class contains four properties, setters and getters and toString() method.
+This class contains four properties, setters and getters and **toString()** method.
 
 ```java
 public class Address {  
@@ -18,7 +18,7 @@ public class Address {
 ```
 
 ### Employee.java
-It contains three properties id, name and address(dependent object) , setters and getters with displayInfo() method.
+It contains three properties *id, name* and *address(dependent object)*, setters and getters with **displayInfo()** method.
 
 ```java
 public class Employee {  
@@ -60,7 +60,7 @@ The **ref** attribute of **property** elements is used to define the reference o
 ```
 
 ### Main.java
-This class gets the bean from the applicationContext.xml file and calls the displayInfo() method.
+This class gets the bean from the **applicationContext.xml** file and calls the displayInfo() method.
 
 ```java
 public class Main {
@@ -72,4 +72,22 @@ public class Main {
         
     }
 }
+```
+
+### Dependencies in **pom.xml** file
+
+```xml
+<dependencies>
+   <dependency>
+       <groupId>org.springframework</groupId>
+       <artifactId>spring-core</artifactId>
+       <version>latest-ver</version>
+   </dependency>
+
+   <dependency>
+       <groupId>org.springframework</groupId>
+       <artifactId>spring-context</artifactId>
+       <version>latest-ver</version>
+   </dependency>
+</dependencies>
 ```
