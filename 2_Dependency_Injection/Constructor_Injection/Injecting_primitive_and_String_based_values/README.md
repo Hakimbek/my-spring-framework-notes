@@ -99,3 +99,8 @@ You may pass integer literal and string both as following
 </bean>  
 ```
 ### Output: 10 Hakim
+
+### Dependencies in **pom.xml** file
+
+```xml
+```
