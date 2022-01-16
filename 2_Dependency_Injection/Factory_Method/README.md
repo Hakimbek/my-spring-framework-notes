@@ -80,7 +80,7 @@ public class A {
 </beans>
 ```
 
-### Test.java
+### Main.java
 This class gets the bean from the applicationContext.xml file and calls the msg method.
 
 ```java
