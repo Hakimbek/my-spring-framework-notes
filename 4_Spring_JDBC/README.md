@@ -151,7 +151,7 @@ public class Main {
 }
 ```
 
-### Dependencies in my **pom.xml** file
+### Dependencies in my pom.xml file
 
 ```xml
 <dependencies>
