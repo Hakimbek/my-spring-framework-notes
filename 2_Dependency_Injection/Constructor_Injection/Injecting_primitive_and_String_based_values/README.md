@@ -50,9 +50,9 @@ We are providing the information into the bean with this file. The constructor-a
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
   
-<bean id="employee" class="io.spring.injection.Employee">  
-  <constructor-arg value="10" type="int" /> 
-</bean>  
+  <bean id="employee" class="io.spring.injection.Employee">  
+    <constructor-arg value="10" type="int" /> 
+  </bean>  
   
 </beans>  
 ```
