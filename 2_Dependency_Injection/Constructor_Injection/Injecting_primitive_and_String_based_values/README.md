@@ -115,5 +115,5 @@ You may pass integer literal and string both as following
             <artifactId>spring-context</artifactId>
             <version>latest-ver</version>
         </dependency>
-    </dependencies>
+</dependencies>
 ```
