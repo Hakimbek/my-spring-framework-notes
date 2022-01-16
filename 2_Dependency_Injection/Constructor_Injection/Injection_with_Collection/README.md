@@ -16,7 +16,7 @@ In this example, we are taking the example of Forum where One question can have 
 In this example, we are using list that can have duplicate elements, you may use set that have only unique elements. But, you need to change list to set in the applicationContext.xml file and List to Set in the Question.java file.
 
 ### Question.java
-This class contains three properties, two constructors and displayInfo() method that prints the information. Here, we are using List to contain the multiple answers.
+This class contains three properties, two constructors and **displayInfo()** method that prints the information. Here, we are using List to contain the multiple answers.
 
 ```java
 public class Question {  
