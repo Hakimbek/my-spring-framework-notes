@@ -16,7 +16,7 @@ In this example, we are taking the example of Forum where One question can have 
 In this example, we are using list that can have duplicate elements, you may use set that have only unique elements. But, you need to change list to set in the applicationContext.xml file and List to Set in the Question.java file.
 
 ### Question.java
-This class contains three properties with setters and getters and displayInfo() method that prints the information. Here, we are using List to contain the multiple answers.
+This class contains three properties with setters and getters and **displayInfo()** method that prints the information. Here, we are using List to contain the multiple answers.
 
 ```java
 public class Question {  
@@ -63,7 +63,7 @@ The list element of constructor-arg is used here to define the list.
 ```
 
 ### Main.java
-This class gets the bean from the applicationContext.xml file and calls the displayInfo method.
+This class gets the bean from the **applicationContext.xml** file and calls the displayInfo method.
 
 ```java
 public class Main {
@@ -77,9 +77,7 @@ public class Main {
 }
 ```
 
----
-
-## Setter Injection with Non-String Collection (having Dependent Object)
+# Setter Injection with Non-String Collection (having Dependent Object)
 If we have dependent object in the collection, we can inject these information by using the **ref** element inside the **list, set** or **map**. Here, we will use list, set or map element inside the property element.
 
 In this example, we are taking the example of Forum where One question can have multiple answers. But Answer has its own information such as *answerId, answer* and *postedBy*. There are four pages used in this example:
@@ -89,10 +87,27 @@ In this example, we are taking the example of Forum where One question can have 
 - applicationContext.xml
 - Main.java
 
-In this example, we are using list that can have duplicate elements, you may use set that have only unique elements. But, you need to change list to set in the applicationContext.xml file and List to Set in the Question.java file.
+In this example, we are using list that can have duplicate elements, you may use set that have only unique elements. But, you need to change list to set in the **applicationContext.xml** file and List to Set in the **Question.java** file.
+
+### Answer.java
+This class has three properties id, name and by with constructor and **toString()** method.
+
+```java
+public class Answer {  
+  private int id;  
+  private String name;  
+  private String by;  
+  
+  //setters and getters  
+  
+  public String toString() {  
+    return id + " " + name + " " + by;  
+  }  
+}  
+```
 
 ### Question.java
-This class contains three properties, two constructors and displayInfo() method that prints the information. Here, we are using List to contain the multiple answers.
+This class contains three properties, two constructors and **displayInfo()** method that prints the information. Here, we are using List to contain the multiple answers.
 
 ```java
 public class Question {  
@@ -111,23 +126,6 @@ public class Question {
     }  
   }  
   
-}  
-```
-
-### Answer.java
-This class has three properties id, name and by with constructor and toString() method.
-
-```java
-public class Answer {  
-  private int id;  
-  private String name;  
-  private String by;  
-  
-  //setters and getters  
-  
-  public String toString() {  
-    return id + " " + name + " " + by;  
-  }  
 }  
 ```
 
@@ -167,7 +165,7 @@ The **ref** element is used to define the reference of another **bean**. Here, w
 ```
 
 ### Main.java
-This class gets the bean from the applicationContext.xml file and calls the displayInfo method.
+This class gets the bean from the **applicationContext.xml** file and calls the displayInfo method.
 
 ```java
 public class Main {
@@ -181,9 +179,7 @@ public class Main {
 }
 ```
 
----
-
-## Setter Injection with Map
+# Setter Injection with Map
 In this example, we are using map as the answer for a question that have answer as the key and username as the value. Here, we are using key and value pair both as a string.
 
 Like previous examples, it is the example of forum where one question can have multiple answers.
@@ -238,7 +234,7 @@ The **entry** attribute of map is used to define the key and value information.
 ```
 
 ### Main.java
-This class gets the bean from the applicationContext.xml file and calls the displayInfo() method.
+This class gets the bean from the **applicationContext.xml** file and calls the displayInfo() method.
 
 ```java
 public class Main {
@@ -252,43 +248,10 @@ public class Main {
 }
 ```
 
----
-
-## Setter Injection with Non-String Map (having dependent Object)
+# Setter Injection with Non-String Map (having dependent Object)
 In this example, we are using map as the answer that have Answer and User. Here, we are using key and value pair both as an object. Answer has its own information such as *answerId, answer* and *postedDate*, User has its own information such as *userId, username* and *emailId*.
 
 Like previous examples, it is the example of forum where one question can have multiple answers.
-
-### Question.java
-This class contains three properties, getters & setters and displayInfo() method to display the information.
-
-```java
-public class Question {  
-  private int id;  
-  private String name;  
-  private Map<Answer,User> answers;  
-  
-  //getters and setters  
-  
-  public void displayInfo() {
-        System.out.println("question id: " + id);
-        System.out.println("question name: " + name);
-        System.out.println("Answers....");
-        Set<Map.Entry<Answer, User>> set = answers.entrySet();
-        Iterator<Map.Entry<Answer, User>> itr = set.iterator();
-        while (itr.hasNext()) {
-            Map.Entry<Answer, User> entry = itr.next();
-            Answer ans = entry.getKey();
-            User user = entry.getValue();
-            System.out.println("Answer Information:");
-            System.out.println(ans);
-            System.out.println("Posted By:");
-            System.out.println(user);
-        }
-  }
-  
-}  
-```
 
 ### Answer.java
 
@@ -331,6 +294,37 @@ public class User {
   public String toString(){  
     return "Id: " + id + " Name: " + name + " Email Id: " + email;  
   }  
+}  
+```
+
+### Question.java
+This class contains three properties, getters & setters and displayInfo() method to display the information.
+
+```java
+public class Question {  
+  private int id;  
+  private String name;  
+  private Map<Answer,User> answers;  
+  
+  //getters and setters  
+  
+  public void displayInfo() {
+        System.out.println("question id: " + id);
+        System.out.println("question name: " + name);
+        System.out.println("Answers....");
+        Set<Map.Entry<Answer, User>> set = answers.entrySet();
+        Iterator<Map.Entry<Answer, User>> itr = set.iterator();
+        while (itr.hasNext()) {
+            Map.Entry<Answer, User> entry = itr.next();
+            Answer ans = entry.getKey();
+            User user = entry.getValue();
+            System.out.println("Answer Information:");
+            System.out.println(ans);
+            System.out.println("Posted By:");
+            System.out.println(user);
+        }
+  }
+  
 }  
 ```
 
@@ -381,8 +375,8 @@ The **key-ref** and **value-ref** attributes of entry element is used to define 
 </beans>
 ```
 
-### Test.java
-This class gets the bean from the applicationContext.xml file and calls the displayInfo() method to display the information.
+### Main.java
+This class gets the bean from the **applicationContext.xml** file and calls the **displayInfo()** method to display the information.
 
 ```java
 public class Main {
@@ -394,4 +388,22 @@ public class Main {
 
     }
 }
+```
+
+### Dependencies in **pom.xml** file
+
+```xml
+<dependencies>
+   <dependency>
+       <groupId>org.springframework</groupId>
+       <artifactId>spring-core</artifactId>
+       <version>latest-ver</version>
+   </dependency>
+
+   <dependency>
+       <groupId>org.springframework</groupId>
+       <artifactId>spring-context</artifactId>
+       <version>latest-ver</version>
+   </dependency>
+</dependencies>
 ```
