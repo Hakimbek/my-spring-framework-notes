@@ -124,7 +124,13 @@ public class Main {
 }
 ```
 
-factId>spring-context</artifactId>
+### Dependencies in my pom.xml file
+
+```xml
+<dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
             <version>5.3.15</version>
         </dependency>
 
