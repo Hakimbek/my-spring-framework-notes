@@ -1,35 +1,44 @@
-# Spring Framework Tutorial
+# Spring with ORM Frameworks
+Spring provides API to easily integrate Spring with **ORM** frameworks such as **Hibernate, JPA(Java Persistence API), JDO(Java Data Objects), Oracle Toplink** and **iBATIS**.
 
-- ### [Spring Overview](1_Spring_Overview/README.md)
- 
-- ### [Dependency Injection](2_Dependency_Injection/README.md)
+## Advantage of ORM Frameworks with Spring
+- **Less coding is required:** By the help of Spring framework, you don't need to write extra codes before and after the actual database logic such as getting the connection, starting transaction, commiting transaction, closing connection etc.
+- **Easy to test:** Spring's IoC approach makes it easy to test the application.
+- **Better exception handling:** Spring framework provides its own API for exception handling with ORM framework.
+- **Integrated transaction management:** By the help of Spring framework, we can wrap our mapping code with an explicit template wrapper class or AOP style method interceptor.
 
-  - ### Contructor Injection
-    - [Injecting primitive and string-based values](2_Dependency_Injection/Constructor_Injection/Injecting_primitive_and_String_based_values/README.md)
-    - [Injection with Dependent Object](2_Dependency_Injection/Constructor_Injection/Injection_with_Dependant_Object/README.md)
-    - [Injection with Collection](2_Dependency_Injection/Constructor_Injection/Injection_with_Collection/README.md)
-    - [Inheriting Bean in Spring](2_Dependency_Injection/Constructor_Injection/Inheriting_Bean_in_Spring/README.md)
-    
-  - ### Setter Injection
-    - [Injecting primitive and string-based values](2_Dependency_Injection/Setter_Injection/Injecting_primitive_and_String_based_values/README.md)
-    - [Injection with Dependent Object](2_Dependency_Injection/Setter_Injection/Injection_with_Dependant_Object/README.md)
-    - [Injection with Collection](2_Dependency_Injection/Setter_Injection/Injection_with_Collection/README.md)
-    
-  - ### [Autowiring](2_Dependency_Injection/Autowiring/README.md)
-  
-  - ### [Factory Method](2_Dependency_Injection/Factory_Method/README.md)
-  
-- ### [Spring AOP](3_Spring_AOP/README.md)
+# Hibernate and Spring Integration
+We can simply integrate hibernate application with spring application.
 
-  - ### [Spring old Style AOP](3_Spring_AOP/Old_Style/README.md)
-  
-  - ### Spring AspectJ AOP
-    - [By Annotation](3_Spring_AOP/AspectJ/Annotation/README.md)
-    - [By XML configuration](3_Spring_AOP/AspectJ/XML/README.md)
+In hibernate framework, we provide all the database information **hibernate.cfg.xml** file.
+
+But if we are going to integrate the hibernate application with spring, we don't need to create the **hibernate.cfg.xml** file. We can provide all the information in the **applicationContext.xml** file.
+
+### Advantage of Spring framework with hibernate
+The Spring framework provides **HibernateTemplate** class, so you don't need to follow so many steps like create Configuration, BuildSessionFactory, Session, beginning and committing transaction etc.
+So it saves a lot of code.
+
+Understanding problem without using spring:
+
+Let's understand it by the code of hibernate given below:
+
+```java
+//creating configuration  
+Configuration cfg = new Configuration();    
+cfg.configure("hibernate.cfg.xml");    
     
-- ### [Spring JDBC](4_Spring_JDBC/README.md)
-  - [JdbcTemplate](4_Spring_JDBC/Jdbc_Template_Example/README.md)
-  - [PreparedStatement](4_Spring_JDBC/Prepared_Statement_Example/README.md)
-  - [ResultSetExecutor](4_Spring_JDBC/Result_Set_Example/README.md)
-  - [RowMapper](4_Spring_JDBC/Row_Mapper_Example/README.md)
-  - [NamedParameter](4_Spring_JDBC/Named_Parameter_Example/README.md)
+//creating seession factory object    
+SessionFactory factory = cfg.buildSessionFactory();    
+    
+//creating session object    
+Session session = factory.openSession();    
+    
+//creating transaction object    
+Transaction t = session.beginTransaction();    
+        
+Employee e1 = new Employee(111,"Hakim",40000);    
+session.persist(e1); //persisting the object    
+    
+t.commit(); //transaction is commited    
+session.close();    
+```
