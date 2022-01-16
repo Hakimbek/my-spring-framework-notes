@@ -81,8 +81,6 @@ If you change the bean element as given above, string parameter constructor will
 
 ### Output: 0 10
 
----
-
 You may also pass the string literal as following:
 
 ```xml
@@ -91,8 +89,6 @@ You may also pass the string literal as following:
 </bean>  
 ```
 ### Output: 0 Hakim
-
----
 
 You may pass integer literal and string both as following
 
