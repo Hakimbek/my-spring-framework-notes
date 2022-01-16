@@ -27,7 +27,7 @@ The Spring framework comprises many modules such as core, beans, context, expres
 - ### JDBC
   - The JDBC module provides a JDBC-abstraction layer that removes the need for tedious JDBC related coding.
 - ### ORM
-  - The ORM module provides integration layers for popular object-relational mapping APIs, including JPA, JDO, Hibernate, and iBatis.
+  - The ORM module provides integration layers for popular object-relational mapping APIs, including JPA, JDO, Hibernate and iBatis.
 - ### OXM
   - The OXM module provides an abstraction layer that supports Object/XML mapping implementations for JAXB, Castor, XMLBeans, JiBX and XStream.
 - ### JMS
