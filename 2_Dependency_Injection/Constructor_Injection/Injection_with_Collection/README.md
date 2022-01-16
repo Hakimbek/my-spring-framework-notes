@@ -69,7 +69,7 @@ The list element of constructor-arg is used here to define the list.
 ```
 
 ### Main.java
-This class gets the bean from the applicationContext.xml file and calls the displayInfo method.
+This class gets the bean from the **applicationContext.xml** file and calls the displayInfo method.
 
 ```java
 public class Main {  
