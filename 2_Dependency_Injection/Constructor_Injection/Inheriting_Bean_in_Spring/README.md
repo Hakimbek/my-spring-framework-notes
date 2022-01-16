@@ -4,7 +4,7 @@ By using the parent attribute of bean, we can specify the inheritance relation b
 Let's see the simple example to inherit the bean.
 
 ### Employee.java
-This class contains three properties, three constructor and show() method to display the values.
+This class contains three properties, three constructor and **show()** method to display the values.
 
 ```java
 public class Employee {  
@@ -81,7 +81,7 @@ public class Address {
 ```
 
 ### Main.java
-This class gets the bean from the applicationContext.xml file and calls the show method.
+This class gets the bean from the **applicationContext.xml** file and calls the show method.
 
 ```java
 public class Main {
@@ -93,4 +93,22 @@ public class Main {
         
     }
 }
+```
+
+### Dependencies in **pom.xml** file
+
+```xml
+<dependencies>
+   <dependency>
+       <groupId>org.springframework</groupId>
+       <artifactId>spring-core</artifactId>
+       <version>latest-ver</version>
+   </dependency>
+
+   <dependency>
+       <groupId>org.springframework</groupId>
+       <artifactId>spring-context</artifactId>
+       <version>latest-ver</version>
+   </dependency>
+</dependencies>
 ```
