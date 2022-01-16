@@ -1,6 +1,8 @@
 # Spring Framework
 Spring is a lightweight framework. It can be thought of as a ***framework of frameworks*** because it provides support to various frameworks. The framework, in broader sense, can be defined as a structure where we find solution of the various technical problems.
+
 ## Advantages of Spring Framework
+
 ### 1. **Predefined Templates**
    - Spring framework provides templates for **JDBC, Hibernate, JPA etc**. technologies. So there is no need to write too much code. It hides the basic steps of these technologies.
 ### 2. **Loose Coupling**
@@ -12,9 +14,10 @@ Spring is a lightweight framework. It can be thought of as a ***framework of fra
 ### 5. **Fast Development**
    - The Dependency Injection feature of Spring Framework and its support for various frameworks makes the development of **JavaEE** applications easy.
 ### 6. **Powerful abstraction**
-   - It provides powerful abstraction to JavaEE specifications such as JMS, JDBC, JPA and JTA.
+   - It provides powerful abstraction to **JavaEE** specifications such as **JMS, JDBC, JPA** and **JTA**.
 ### 7. **Declarative support**
    - It provides declarative support for caching, validation, transactions and formatting.
+   
 ## Spring Modules
 The Spring framework comprises many modules such as core, beans, context, expression language, AOP, Aspects, Instrumentation, JDBC, ORM, OXM, JMS, Transaction, Web, Servlet, Struts etc. These modules are grouped into Test, Core Container, AOP, Aspects, Instrumentation, Data Access / Integration, Web (MVC / Remoting)
 
