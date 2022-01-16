@@ -64,3 +64,16 @@ hibernateTemplate.save(e1);
 | 8 | List loadAll(Class entityClass) | returns the all the persistent objects. |
 
 # Example of Hibernate and spring integration
+We are assuming that you have created the following table inside the database.
+
+```sql
+CREATE TABLE public.employee
+(
+    id integer,
+    name character varying,
+    salary double precision
+);
+```
+
+### Employee.java
+It is a simple **POJO** class. Here it works as the persistent class for hibernate.
