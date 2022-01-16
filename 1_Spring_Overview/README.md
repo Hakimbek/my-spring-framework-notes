@@ -10,7 +10,7 @@ Spring is a lightweight framework. It can be thought of as a ***framework of fra
 ### 4. **Lightweight**
    - The Spring framework is lightweight because of its **POJO** implementation. The Spring Framework doesn't force the programmer to inherit any class or implement any interface.        That is why it is said to be non-invasive.
 ### 5. **Fast Development**
-   - The Dependency Injection feature of Spring Framework and its support for various frameworks makes the development of JavaEE applications easy.
+   - The Dependency Injection feature of Spring Framework and its support for various frameworks makes the development of **JavaEE** applications easy.
 ### 6. **Powerful abstraction**
    - It provides powerful abstraction to JavaEE specifications such as JMS, JDBC, JPA and JTA.
 ### 7. **Declarative support**
