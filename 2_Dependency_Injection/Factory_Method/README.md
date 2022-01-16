@@ -32,8 +32,8 @@ There can be three types of factory method:
 3. A **non-static factory method** that returns instance of **another** class. It is used when an instance is not known and decided at runtime.
 
 ```xml
-<bean id="a" class="io.spring.framework.A"></bean>  
-<bean id="b" class="io.spring.framework.A" factory-method="getB" factory-bean="a"></bean>
+<bean id="a" class="io.spring.framework.A"/>  
+<bean id="b" class="io.spring.framework.A" factory-method="getB" factory-bean="a"/>
 ```
 
 ---
