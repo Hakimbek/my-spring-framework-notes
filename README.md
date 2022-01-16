@@ -36,4 +36,4 @@
  
 - ### [Spring ORM](5_Spring_ORM/README.md)
 
-- ### [Spring SpLE](6_Spring_SpLE/README.md)
+- ### [Spring SpLE](6_Spring_SpEL/README.md)
