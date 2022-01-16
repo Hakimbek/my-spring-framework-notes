@@ -424,9 +424,6 @@ public class Main {
 ### Dependencies in my **pom.xml** file
 
 ```xml
-### Dependencies in **pom.xml** file
-
-```xml
 <dependencies>
     <dependency>
         <groupId>org.springframework</groupId>
@@ -440,5 +437,4 @@ public class Main {
         <version>latest-ver</version>
     </dependency>
 </dependencies>
-```
 ```
