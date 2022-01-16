@@ -54,16 +54,16 @@ The list element of constructor-arg is used here to define the list.
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
   
   <bean id="question" class="io.spring.framework.Question">  
-    <constructor-arg value="3" />  
-    <constructor-arg value="What is java?" />
-    <constructor-arg>  
-      <list>  
-        <value>Java is a programming language</value>  
-        <value>Java is a Platform</value>  
-        <value>Java is an Island of Indonasia</value>  
-      </list>  
-    </constructor-arg>  
-</bean>  
+      <constructor-arg value="3" />  
+      <constructor-arg value="What is java?" />
+      <constructor-arg>  
+        <list>  
+          <value>Java is a programming language</value>  
+          <value>Java is a Platform</value>  
+          <value>Java is an Island of Indonasia</value>  
+        </list>  
+      </constructor-arg>  
+  </bean>  
   
 </beans>  
 ```
