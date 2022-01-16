@@ -64,7 +64,7 @@ We are providing the information into the bean by this file. The property elemen
 ```
 
 ### Main.java
-This class gets the bean from the applicationContext.xml file and calls the display method.
+This class gets the bean from the **applicationContext.xml** file and calls the display method.
 
 ```java
 public class Main {
@@ -76,4 +76,22 @@ public class Main {
 
     }
 }
+```
+
+### Dependencies in **pom.xml** file
+
+```xml
+<dependencies>
+   <dependency>
+       <groupId>org.springframework</groupId>
+       <artifactId>spring-core</artifactId>
+       <version>latest-ver</version>
+   </dependency>
+
+   <dependency>
+       <groupId>org.springframework</groupId>
+       <artifactId>spring-context</artifactId>
+       <version>latest-ver</version>
+   </dependency>
+</dependencies>
 ```
