@@ -186,7 +186,7 @@ The **ref** element is used to define the reference of another bean. Here, we ar
 ```
 
 ### Main.java
-This class gets the bean from the applicationContext.xml file and calls the displayInfo method.
+This class gets the bean from the **applicationContext.xml** file and calls the displayInfo method.
 
 ```java
 public class Main {
@@ -200,21 +200,19 @@ public class Main {
 }
 ```
 
----
-
-## Constructor Injection with Map
+# Constructor Injection with Map
 In this example, we are using map as the answer that have answer with posted username. Here, we are using key and value pair both as a string.
 
 Like previous examples, it is the example of forum where one question can have multiple answers.
 
 ### Question.java
-This class contains three properties, two constructors and displayInfo() method to display the information.
+This class contains three properties, two constructors and **displayInfo()** method to display the information.
 
 ```java
 public class Question {  
   private int id;  
   private String name;  
-  private Map<String,String> answers;  
+  private Map<String, String> answers;  
   
   public Question() {}  
   
@@ -263,7 +261,7 @@ The entry attribute of map is used to define the key and value information.
 ```
 
 ### Main.java
-This class gets the bean from the applicationContext.xml file and calls the displayInfo() method.
+This class gets the bean from the **applicationContext.xml** file and calls the **displayInfo()** method.
 
 ```java
 public class Main {
@@ -277,21 +275,41 @@ public class Main {
 }
 ```
 
----
-
-## Constructor Injection with Non-String Map (having dependent Object)
+# Constructor Injection with Non-String Map (having dependent Object)
 In this example, we are using map as the answer that have Answer and User. Here, we are using key and value pair both as an object. Answer has its own information such as *answerId, answer* and *postedDate*, User has its own information such as *userId, username* and *emailId*.
 
 Like previous examples, it is the example of forum where one question can have multiple answers.
 
+### Answer.java
+
+```java
+public class Answer {  
+  private int id;  
+  private String answer;  
+  private Date postedDate;
+  
+  public Answer() {}  
+  
+  public Answer(int id, String answer, Date postedDate) {  
+    this.id = id;  
+    this.answer = answer;  
+    this.postedDate = postedDate;  
+  }  
+  
+  public String toString(){  
+    return "Id:" + id + " Answer: " + answer + " Posted Date: " + postedDate;  
+  }  
+}  
+```
+
 ### Question.java
-This class contains three properties, two constructors and displayInfo() method to display the information.
+This class contains three properties, two constructors and **displayInfo()** method to display the information.
 
 ```java
 public class Question {  
   private int id;  
   private String name;  
-  private Map<Answer,User> answers;  
+  private Map<Answer, User> answers;  
   
   public Question() {}  
   
@@ -319,28 +337,6 @@ public class Question {
     }
   }
   
-}  
-```
-
-### Answer.java
-
-```java
-public class Answer {  
-  private int id;  
-  private String answer;  
-  private Date postedDate;
-  
-  public Answer() {}  
-  
-  public Answer(int id, String answer, Date postedDate) {  
-    this.id = id;  
-    this.answer = answer;  
-    this.postedDate = postedDate;  
-  }  
-  
-  public String toString(){  
-    return "Id:" + id + " Answer: " + answer + " Posted Date: " + postedDate;  
-  }  
 }  
 ```
 
@@ -413,7 +409,7 @@ The **key-ref** and **value-ref** attributes of entry element is used to define 
 ```
 
 ### Main.java
-This class gets the bean from the applicationContext.xml file and calls the displayInfo() method to display the information.
+This class gets the bean from the **applicationContext.xml** file and calls the **displayInfo()** method to display the information.
 
 ```java
 public class Main {
@@ -423,4 +419,26 @@ public class Main {
         question.displayInfo();
     }
 }
+```
+
+### Dependencies in my **pom.xml** file
+
+```xml
+### Dependencies in **pom.xml** file
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+        <version>latest-ver</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>latest-ver</version>
+    </dependency>
+</dependencies>
+```
 ```
