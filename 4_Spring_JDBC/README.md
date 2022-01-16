@@ -37,7 +37,7 @@ Let's see the methods of spring JdbcTemplate class.
 | 5 |	public T query(String sql, ResultSetExtractor rse) |	is used to fetch records using ResultSetExtractor. |
 | 6 |	public List query(String sql, RowMapper rse) |	is used to fetch records using RowMapper. |
 
-## Example of Spring JdbcTemplate
+# Example of Spring JdbcTemplate
 
 We are assuming that you have created the following table inside the database.
 
@@ -181,7 +181,7 @@ public class Main {
 </dependencies>
 ```
 
-## Example of PreparedStatement in Spring JdbcTemplate
+# Example of PreparedStatement in Spring JdbcTemplate
 We can execute parameterized query using Spring JdbcTemplate by the help of execute() method of JdbcTemplate class. To use parameterized query, we pass the instance of PreparedStatementCallback in the execute method.
 
 ### Syntax of execute method to use parameterized query
@@ -265,7 +265,7 @@ public T query(String sql, ResultSetExtractor<T> rse)
 ### ResultSetExtractor Interface
 ResultSetExtractor interface can be used to fetch records from the database. It accepts a ResultSet and returns the list.
 
-### Example of ResultSetExtractor Interface
+# Example of ResultSetExtractor Interface
 We are assuming that you have created the following table inside the database.
 
 ```sql
