@@ -180,3 +180,75 @@ public class Main {
         </dependency>
 </dependencies>
 ```
+
+## Example of PreparedStatement in Spring JdbcTemplate
+We can execute parameterized query using Spring JdbcTemplate by the help of execute() method of JdbcTemplate class. To use parameterized query, we pass the instance of PreparedStatementCallback in the execute method.
+
+### Syntax of execute method to use parameterized query
+
+```java
+public T execute(String sql, PreparedStatementCallback<T>);  
+```
+
+### PreparedStatementCallback interface
+It processes the input parameters and output results. In such case, you don't need to care about single and double quotes.
+
+## Example of using PreparedStatement in Spring
+We are assuming that you have created the following table inside the Oracle10g database.
+
+```sql
+CREATE TABLE public.employee
+(
+    id integer,
+    name character varying,
+    salary double precision
+);
+
+```
+
+### Employee.java
+Remained unchanged as in the previous example
+
+### EmployeeDao.java
+It contains one property jdbcTemplate and one method **saveEmployeeByPreparedStatement**. You must understand the concept of annonymous class to understand the code of the method.
+
+```java
+public class EmployeeDao {
+    private JdbcTemplate jdbcTemplate;
+
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+    public Boolean saveEmployeeByPreparedStatement(final Employee employee) {
+        String query = "insert into employee values(?,?,?)";
+        return jdbcTemplate.execute(query, (PreparedStatementCallback<Boolean>) ps -> {
+            ps.setInt(1, employee.getId());
+            ps.setString(2, employee.getName());
+            ps.setDouble(3, employee.getSalary());
+
+            return ps.execute();
+        });
+    }
+}
+```
+
+### applicationContext.xml
+Remained unchanged as in the previous example
+
+### Main.java
+This class gets the bean from the **applicationContext.xml** file and calls the **saveEmployeeByPreparedStatement()** method.
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext.xml");
+
+        EmployeeDao dao=(EmployeeDao)ctx.getBean("employeeDao");
+        dao.saveEmployeeByPreparedStatement(new Employee(1,"Hakim",35000));
+    }
+}
+```
+
+### pom.xml 
+Remained unchanged as in the previous example
