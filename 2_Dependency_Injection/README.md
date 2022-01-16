@@ -5,7 +5,7 @@ What is dependency injection exactly? Let's look at these two words separately. 
 
 Dependency injection can happen in the way of passing parameters to the constructor or by post-construction using setter methods.
 
-## IoC Container
+# IoC Container
 The IoC container is responsible for instantiating, configuring and assembling the objects. The IoC container gets information from the XML file and works accordingly. The main tasks performed by IoC container are:
 - *to instantiate the application class*
 - *to configure the object*
