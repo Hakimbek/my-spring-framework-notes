@@ -7,3 +7,14 @@ Spring **JdbcTemplate** is a powerful mechanism to connect to the database and e
 - We need to perform exception handling code on the database logic.
 - We need to handle transaction.
 - Repetition of all these codes from one to another database logic is a time consuming task.
+
+## Advantage of Spring JdbcTemplate
+Spring JdbcTemplate eliminates all the above mentioned problems of JDBC API. It provides you methods to write the queries directly, so it saves a lot of work and time.
+
+## Spring Jdbc Approaches
+Spring framework provides following approaches for JDBC database access:
+
+- JdbcTemplate
+- NamedParameterJdbcTemplate
+- SimpleJdbcTemplate
+- SimpleJdbcInsert and SimpleJdbcCall
