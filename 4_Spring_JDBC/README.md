@@ -178,5 +178,5 @@ public class Main {
             <artifactId>postgresql</artifactId>
             <version>42.3.1</version>
         </dependency>
-    </dependencies>
+</dependencies>
 ```
