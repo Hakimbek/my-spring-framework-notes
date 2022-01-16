@@ -353,3 +353,5 @@ public class Main {
 
 ### pom.xml 
 Remained unchanged as in the previous examples
+
+# RowMapper Example | Fetching records by Spring JdbcTemplate
