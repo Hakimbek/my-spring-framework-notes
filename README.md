@@ -33,3 +33,5 @@
   - [ResultSetExecutor](4_Spring_JDBC/Result_Set_Example/README.md)
   - [RowMapper](4_Spring_JDBC/Row_Mapper_Example/README.md)
   - [NamedParameter](4_Spring_JDBC/Named_Parameter_Example/README.md)
+ 
+- ### [Spring ORM](5_Spring_ORM/README.md)
