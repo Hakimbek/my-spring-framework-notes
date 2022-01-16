@@ -252,7 +252,7 @@ public class Main {
 ### pom.xml 
 Remained unchanged as in the previous example
 
-## ResultSetExtractor Example | Fetching Records by Spring JdbcTemplate
+# ResultSetExtractor Example | Fetching Records by Spring JdbcTemplate
 
 We can easily fetch the records from the database using query() method of JdbcTemplate class where we need to pass the instance of ResultSetExtractor.
 
@@ -265,7 +265,7 @@ public T query(String sql, ResultSetExtractor<T> rse)
 ### ResultSetExtractor Interface
 ResultSetExtractor interface can be used to fetch records from the database. It accepts a ResultSet and returns the list.
 
-# Example of ResultSetExtractor Interface
+## Example of ResultSetExtractor Interface
 We are assuming that you have created the following table inside the database.
 
 ```sql
