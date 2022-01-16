@@ -16,12 +16,9 @@ But if we are going to integrate the hibernate application with spring, we don't
 
 ### Advantage of Spring framework with hibernate
 The Spring framework provides **HibernateTemplate** class, so you don't need to follow so many steps like create Configuration, BuildSessionFactory, Session, beginning and committing transaction etc.
-So it saves a lot of code.
-
-Understanding problem without using spring:
+So it saves a lot of code. Understanding problem without using spring:
 
 Let's understand it by the code of hibernate given below:
-
 ```java
 //creating configuration  
 Configuration cfg = new Configuration();    
@@ -42,3 +39,28 @@ session.persist(e1); //persisting the object
 t.commit(); //transaction is commited    
 session.close();    
 ```
+As you can see in the code of sole hibernate, you have to follow so many steps.
+
+### Solution by using HibernateTemplate class of Spring Framework:
+
+Now, you don't need to follow so many steps. You can simply write this:
+
+```java
+Employee e1=new Employee(111,"Hakim",40000);    
+hibernateTemplate.save(e1);  
+```
+
+## Methods of HibernateTemplate class
+
+| # | Method | Description |
+| - | ------ | ----------- |
+| 1 | void persist(Object entity) |	persists the given object. |
+| 2 | Serializable save(Object entity) | persists the given object and returns id. |
+| 3 | void saveOrUpdate(Object entity) | persists or updates the given object. If id is found, it updates the record otherwise saves the record. |
+| 4 | void update(Object entity) | updates the given object. |
+| 5 | void delete(Object entity) | deletes the given object on the basis of id. |
+| 6 | Object get(Class entityClass, Serializable id) | returns the persistent object on the basis of given id. |
+| 7 | Object load(Class entityClass, Serializable id) | returns the persistent object on the basis of given id. |
+| 8 | List loadAll(Class entityClass) | returns the all the persistent objects. |
+
+# Example of Hibernate and spring integration
