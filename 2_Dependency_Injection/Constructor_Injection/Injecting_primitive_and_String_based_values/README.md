@@ -69,9 +69,7 @@ public class Main {
 ```
 ### Output: 10 null
 
----
-
-### Injecting string-based values
+# Injecting string-based values
 If you don't specify the type attribute in the constructor-arg element, by default string type constructor will be invoked.
 
 ```xml
