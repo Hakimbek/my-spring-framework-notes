@@ -5,8 +5,6 @@ Let's see the simple example to inject primitive and string-based values. We hav
 - applicationContext.xml
 - Main.java
 
----
-
 ### Employee.java
 It is a simple class containing two fields id and name. There are four constructors and one method in this class.
 
