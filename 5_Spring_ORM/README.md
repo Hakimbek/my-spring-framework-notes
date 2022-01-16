@@ -46,7 +46,7 @@ As you can see in the code of sole hibernate, you have to follow so many steps.
 Now, you don't need to follow so many steps. You can simply write this:
 
 ```java
-Employee e1=new Employee(111,"Hakim",40000);    
+Employee e1 = new Employee(111,"Hakim",40000);    
 hibernateTemplate.save(e1);  
 ```
 
