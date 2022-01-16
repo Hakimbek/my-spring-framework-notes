@@ -355,3 +355,77 @@ public class Main {
 Remained unchanged as in the previous examples
 
 # RowMapper Example | Fetching records by Spring JdbcTemplate
+Like ResultSetExtractor, we can use RowMapper interface to fetch the records from the database using **query()** method of JdbcTemplate class. In the execute of we need to pass the instance of **RowMapper** now.
+
+Syntax of query method using RowMapper
+
+```java
+public T query(String sql, RowMapper<T> rm)  
+```
+
+### RowMapper Interface
+RowMapper interface allows to map a row of the relations with the instance of user-defined class. It iterates the ResultSet internally and adds it into the collection. So we don't need to write a lot of code to fetch the records as ResultSetExtractor.
+
+### Advantage of RowMapper over ResultSetExtractor
+RowMapper saves a lot of code becuase it internally adds the data of ResultSet into the collection.
+
+## Example of RowMapper Interface to show all the records of the table
+We are assuming that you have created the following table inside the database.
+
+```sql
+CREATE TABLE public.employee
+(
+    id integer,
+    name character varying,
+    salary double precision
+);
+```
+
+### Employee.java
+Remained unchanged as in the ResultSerExtractor example
+
+### EmployeeDao.java
+It contains on property jdbcTemplate and one method **getAllEmployeesRowMapper**.
+
+```java
+public class EmployeeDao {
+    private JdbcTemplate jdbcTemplate;
+
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+    public List<Employee> getAllEmployeesRowMapper() {
+        return jdbcTemplate.query("select * from employee", (rs, rowNumber) -> {
+            Employee employee = new Employee();
+            employee.setId(rs.getInt(1));
+            employee.setName(rs.getString(2));
+            employee.setSalary(rs.getInt(3));
+            return employee;
+        });
+    }
+}
+```
+
+### applicationContext.xml
+Remained unchanged as in the previous examples
+
+### Main.java
+This class gets the bean from the **applicationContext.xml** file and calls the **getAllEmployeesRowMapper()** method of EmployeeDao class.
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext.xml");
+        EmployeeDao dao=(EmployeeDao)ctx.getBean("employeeDao");
+        List<Employee> list=dao.getAllEmployeesRowMapper();
+
+        for(Employee e:list) {
+            System.out.println(e);
+        }
+    }
+}
+```
+
+### pom.xml 
+Remained unchanged as in the previous examples
