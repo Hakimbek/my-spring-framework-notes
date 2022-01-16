@@ -86,5 +86,5 @@ The **ClassPathXmlApplicationContext** class is the implementation class of the 
 ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");  
 ```
 
-The constructor of the ClassPathXmlApplicationContext class receives a string, so we can pass the name of the xml file to create the instance of ApplicationContext.
+The constructor of the **ClassPathXmlApplicationContext** class receives a string, so we can pass the name of the xml file to create the instance of **ApplicationContext**.
 
