@@ -9,8 +9,6 @@ Let's see the simple example to inject primitive and string-based values. We hav
 It is a simple class containing two fields id and name. There are four constructors and one method in this class.
 
 ```java
-package com.javatpoint;  
-  
 public class Employee {  
   private int id;  
   private String name;  
@@ -58,15 +56,9 @@ We are providing the information into the bean with this file. The constructor-a
 ```
 
 ### Main.java
-This class gets the bean from the applicationContext.xml file and calls the show method.
+This class gets the bean from the **applicationContext.xml** file and calls the show method.
 
 ```java
-package com.javatpoint;  
-  
-import org.springframework.beans.factory.BeanFactory;  
-import org.springframework.beans.factory.xml.XmlBeanFactory;  
-import org.springframework.core.io.*;  
-  
 public class Main {  
   public static void main(String[] args) {  
     ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
