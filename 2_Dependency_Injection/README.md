@@ -81,7 +81,8 @@ We can inject the dependency by setter method also. The `<property>` subelement 
 - Collection values etc.
 
 ## Difference between constructor and setter injection
-1. **Partial dependency:** can be injected using setter injection but it is not possible by constructor. Suppose there are 3 properties in a class, having 3 arg constructor and setter methods. In such a case, if you want to pass information for only one property, it is possible by the setter method only. 
+### Partial dependency
+Can be injected using setter injection but it is not possible by constructor. Suppose there are 3 properties in a class, having 3 arg constructor and setter methods. In such a case, if you want to pass information for only one property, it is possible by the setter method only. 
 2. **Overriding:** Setter injection overrides the constructor injection. If we use both constructor and setter injection, IOC containers will use the setter injection.
 3. **Changes:** We can easily change the value by setter injection. It doesn't always create a new bean instance like a constructor. So setter injection is more flexible than constructor injection.
 
