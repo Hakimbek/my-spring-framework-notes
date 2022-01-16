@@ -103,4 +103,17 @@ You may pass integer literal and string both as following
 ### Dependencies in **pom.xml** file
 
 ```xml
+<dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>latest-ver</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>latest-ver</version>
+        </dependency>
+    </dependencies>
 ```
