@@ -6,7 +6,7 @@ Spring is a lightweight framework. It can be thought of as a ***framework of fra
 ### 2. **Loose Coupling**
    - The Spring applications are loosely coupled because of dependency injection.
 ### 3. **Easy to test**
-   - The Dependency Injection makes it easier to test the application. The EJB or Struts application requires a server to run the application but the Spring framework doesn't        require a server.
+   - The Dependency Injection makes it easier to test the application. The **EJB** or **Struts** application requires a server to run the application but the Spring framework doesn't require a server.
 ### 4. **Lightweight**
    - The Spring framework is lightweight because of its POJO implementation. The Spring Framework doesn't force the programmer to inherit any class or implement any interface.        That is why it is said to be non-invasive.
 ### 5. **Fast Development**
