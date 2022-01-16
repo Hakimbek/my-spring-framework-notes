@@ -4,6 +4,18 @@
  
 - ### [Dependency Injection](2_Dependency_Injection/README.md)
 
+<details><summary>Constructor Injection</summary>
+<p>
+
+#### We can hide anything, even code!
+
+    ```ruby
+      puts "Hello World"
+    ```
+
+</p>
+</details>
+
   - ### Contructor Injection
     - [Injecting primitive and string-based values](2_Dependency_Injection/Constructor_Injection/Injecting_primitive_and_String_based_values/README.md)
     - [Injection with Dependent Object](2_Dependency_Injection/Constructor_Injection/Injection_with_Dependant_Object/README.md)
