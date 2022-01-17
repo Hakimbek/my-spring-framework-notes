@@ -38,5 +38,5 @@
 
 - ## [Spring SpEL](6_Spring_SpEL/README.md)
 
-- ## Spring MVC
+- ## Spring Security
   - [Spring Security Overview](7_Spring_Security/README.md)
