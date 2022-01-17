@@ -1,8 +1,8 @@
 # Spring Framework Tutorial
 
-- ### [Spring Overview](1_Spring_Overview/README.md)
+- ## [Spring Overview](1_Spring_Overview/README.md)
  
-- ### [Dependency Injection](2_Dependency_Injection/README.md)
+- ## [Dependency Injection](2_Dependency_Injection/README.md)
 
   - ### Contructor Injection
     - [Injecting primitive and string-based values](2_Dependency_Injection/Constructor_Injection/Injecting_primitive_and_String_based_values/README.md)
@@ -19,7 +19,7 @@
   
   - ### [Factory Method](2_Dependency_Injection/Factory_Method/README.md)
   
-- ### [Spring AOP](3_Spring_AOP/README.md)
+- ## [Spring AOP](3_Spring_AOP/README.md)
 
   - ### [Spring old Style AOP](3_Spring_AOP/Old_Style/README.md)
   
@@ -27,7 +27,7 @@
     - [By Annotation](3_Spring_AOP/AspectJ/Annotation/README.md)
     - [By XML configuration](3_Spring_AOP/AspectJ/XML/README.md)
     
-- ### [Spring JDBC](4_Spring_JDBC/README.md)
+- ## [Spring JDBC](4_Spring_JDBC/README.md)
   - [JdbcTemplate](4_Spring_JDBC/Jdbc_Template_Example/README.md)
   - [PreparedStatement](4_Spring_JDBC/Prepared_Statement_Example/README.md)
   - [ResultSetExecutor](4_Spring_JDBC/Result_Set_Example/README.md)
