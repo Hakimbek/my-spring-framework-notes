@@ -34,6 +34,6 @@
   - [RowMapper](4_Spring_JDBC/Row_Mapper_Example/README.md)
   - [NamedParameter](4_Spring_JDBC/Named_Parameter_Example/README.md)
  
-- ### [Spring ORM](5_Spring_ORM/README.md)
+- ## [Spring ORM](5_Spring_ORM/README.md)
 
-- ### [Spring SpEL](6_Spring_SpEL/README.md)
+- ## [Spring SpEL](6_Spring_SpEL/README.md)
